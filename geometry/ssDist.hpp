@@ -1,4 +1,3 @@
-#include "./Point.hpp"
 #include "./segDist.hpp"
 #include "./segInter.hpp"
 
