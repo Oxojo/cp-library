@@ -46,9 +46,13 @@ public:
 		mod = md;
 		root = g;
 	}
+
+	ll size() const {
+		return (ll)this->size();
+	}
 	
 	P pre(ll def) const {
-		return P(begin(*this), begin(*this) + min((ll)this->size(), def));
+		return P(begin(*this), begin(*this) + min(size(), def));
 	}
 	P rev(ll deg = -1) const {
 		P ret(*this);
@@ -61,7 +65,7 @@ public:
 		while (this->size() && !this->back()) this->pop_back();
 	}
 
-	T freq(ll p) const { return (p < (ll)this->size()) ? (*this)[p] : T(0); }
+	T freq(ll p) const { return (p < size()) ? (*this)[p] : T(0); }
 
 	P operator+(const P& r) const { return P(*this) += r; }
 	P operator+(const T& v) const { return P(*this) += v; }
@@ -73,13 +77,13 @@ public:
 	P operator%(const P& r) const { return P(*this) %= r; }
 
 	P& operator+=(const P& r) {
-		if (sz(r) > (ll)this->size()) this->resize(sz(r));
-		rep(i, sz(r)) (*this)[i] += r[i];
+		if (r.size() > size()) this->resize(r.size());
+		rep(i, r.size()) (*this)[i] += r[i];
 		return *this;
 	}
 	P& operator-=(const P& r) {
-		if (sz(r) > (ll)this->size()) this->resize(sz(r));
-		rep(i, sz(r)) (*this)[i] = (*this)[i] - r[i] + (r[i] > (*this)[i] ? mod : 0ll);
+		if (r.size() > size()) this->resize(r.size());
+		rep(i, r.size()) (*this)[i] = (*this)[i] - r[i] + (r[i] > (*this)[i] ? mod : 0ll);
 		return *this;
 	}
 
@@ -111,8 +115,8 @@ public:
 		return make_pair(q, x);
 	}
 	P operator-() const {
-		P ret(sz(this));
-		rep(i, sz(this)) ret[i] = -(*this)[i];
+		P ret(size());
+		rep(i, size()) ret[i] = -(*this)[i];
 		return ret;
 	}
 	P& operator+=(const T& v) {
@@ -126,16 +130,16 @@ public:
 		return *this;
 	}
 	P& operator*=(const T& v) {
-		rep(i, (ll)this->size()) (*this)[i] = modmul((*this)[i], v, mod);
+		rep(i, size()) (*this)[i] = modmul((*this)[i], v, mod);
 		return *this;
 	}
 	P dot(P r) const {
 		P ret(min(this->size(), r.size()));
-		rep(i, sz(ret)) ret[i] = modmul((*this)[i], r[i], mod);
+		rep(i, ret.size()) ret[i] = modmul((*this)[i], r[i], mod);
 		return ret;
 	}
 	P operator>>(ll sz) const {
-		if ((ll)this->size() <= sz) return {};
+		if (size() <= sz) return {};
 		P ret(*this);
 		ret.erase(ret.begin(), ret.begin() + sz);
 		return ret;
@@ -154,19 +158,19 @@ public:
 		return r;
 	}
 	P diff() const {
-		const ll n = (ll)this->size();
+		const ll n = size();
 		P ret(max(0ll, n - 1));
 		reps(i, 1, n) ret[i - 1] = modmul((*this)[i], T(i), mod);
 		return ret;
 	}
 	P integral() const {
-		const ll n = (ll)this->size();
+		const ll n = size();
 		P ret(n + 1);
 		rep(i, n) ret[i + 1] = modmul(freq(i), modinv(T(i + 1), mod), mod);
 		return ret;
 	}
 	P inv(ll deg = -1) const {
-		if (deg == -1) deg = (ll)this->size();
+		if (deg == -1) deg = size();
 		P res = P({modmul(T(1), modinv(freq(0), mod), mod)});
 		for (ll i = 1; i < deg; i *= 2) {
 			res = (res * T(2) - res * res * pre(2 * i)).pre(2 * i);
@@ -175,7 +179,7 @@ public:
 	}
 	P exp(ll n = -1) const {
 		assert(freq(0) == T(0));
-		if (n == -1) n = (ll)this->size();
+		if (n == -1) n = size();
 		P g = P({T(1)});
 		for (ll i = 1; i < n; i *= 2) {
 			g = (g * (pre(i * 2) + P({T(1)}) - g.log(i * 2))).pre(i * 2);
@@ -183,13 +187,13 @@ public:
 		return g.pre(n);
 	}
 	P log(ll n = -1) const {
-		if (n == -1) n = (ll)this->size();
+		if (n == -1) n = size();
 		assert(freq(0) == T(1));
 		auto f = pre(n);
 		return (f.diff() * f.inv(n - 1)).pre(n - 1).integral();
 	}
 	P sqrt(ll deg = -1) const {
-		const ll n = (ll)this->size();
+		const ll n = size();
 		if (deg == -1) deg = n;
 		if ((*this)[0] == T(0)) {
 			reps(i, 1, n) {
@@ -199,7 +203,7 @@ public:
 					auto ret = (*this >> i).sqrt(deg - i / 2);
 					if (ret.empty()) return {};
 					ret = ret << (i / 2);
-					if (sz(ret) < deg) ret.resize(deg, T(0));
+					if (ret.size() < deg) ret.resize(deg, T(0));
 					return ret;
 				}
 			}
@@ -215,13 +219,13 @@ public:
 		return ret.pre(deg);
 	}
 	P pow(ll k, ll n = -1) {
-		if (n == -1) n = (ll)this->size();
+		if (n == -1) n = size();
 		if (k == 0) {
 			P res(n);
 			res[0] = T(1);
 			return res;
 		}
-		rep(i, (ll)this->size()) {
+		rep(i, size()) {
 			if ((*this)[i]) {
 				T rev = modmul(T(1), modinv((*this)[i], mod), mod);
 				P ret = (((*this * rev) >> i).log(n) * T(k)).exp(n);
