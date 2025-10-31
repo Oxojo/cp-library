@@ -1,20 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/fps/fps.hpp
     title: library/fps/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/math/modula.hpp
     title: library/math/modula.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.hpp
     title: library/template/template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/yosupo/frequency-tree-distance.test.cpp
+    title: verify/yosupo/frequency-tree-distance.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/tree/FrequencyTreeDistance.hpp\"\n\n#line 2 \"library/template/template.hpp\"\
@@ -77,68 +80,69 @@ data:
     \t\tntt(L), ntt(R);\n\t\trep(i, n) out[-i & (n - 1)] = modmul(L[i], modmul(R[i],\
     \ inv, mod), mod);\n\t\tntt(out);\n\t\tout.resize(s);\n\t\treturn out;\n\t}\n\n\
     public:\n\tusing vector<T>::vector;\n\tusing P = FPS;\n\n\tvoid set_mod(ll md,\
-    \ ll g) {\n\t\tmod = md;\n\t\troot = g;\n\t}\n\n\tll size() const {\n\t\treturn\
-    \ (ll)this->size();\n\t}\n\t\n\tP pre(ll def) const {\n\t\treturn P(begin(*this),\
-    \ begin(*this) + min(size(), def));\n\t}\n\tP rev(ll deg = -1) const {\n\t\tP\
-    \ ret(*this);\n\t\tif (deg != -1) ret.resize(deg, T(0));\n\t\treverse(all(ret));\n\
-    \t\treturn ret;\n\t}\n\n\tvoid shrink() {\n\t\twhile (this->size() && !this->back())\
-    \ this->pop_back();\n\t}\n\n\tT freq(ll p) const { return (p < size()) ? (*this)[p]\
-    \ : T(0); }\n\n\tP operator+(const P& r) const { return P(*this) += r; }\n\tP\
-    \ operator+(const T& v) const { return P(*this) += v; }\n\tP operator-(const P&\
-    \ r) const { return P(*this) -= r; }\n\tP operator-(const T& v) const { return\
-    \ P(*this) -= v; }\n\tP operator*(const P& r) const { return P(*this) *= r; }\n\
-    \tP operator*(const T& v) const { return P(*this) *= v; }\n\tP operator/(const\
-    \ P& r) const { return P(*this) /= r; }\n\tP operator%(const P& r) const { return\
-    \ P(*this) %= r; }\n\n\tP& operator+=(const P& r) {\n\t\tif (r.size() > size())\
-    \ this->resize(r.size());\n\t\trep(i, r.size()) (*this)[i] += r[i];\n\t\treturn\
-    \ *this;\n\t}\n\tP& operator-=(const P& r) {\n\t\tif (r.size() > size()) this->resize(r.size());\n\
-    \t\trep(i, r.size()) (*this)[i] = (*this)[i] - r[i] + (r[i] > (*this)[i] ? mod\
-    \ : 0ll);\n\t\treturn *this;\n\t}\n\n\tP& operator*=(const P& r) {\n\t\tif (this->empty()\
-    \ || r.empty()) {\n\t\t\tthis->clear();\n\t\t\treturn *this;\n\t\t}\n\t\tauto\
-    \ ret = conv(*this, r);\n\t\treturn *this = {all(ret)};\n\t}\n\tP& operator/=(const\
-    \ P& r) {\n\t\tif (this->size() < r.size()) {\n\t\t\tthis->clear();\n\t\t\treturn\
-    \ *this;\n\t\t}\n\t\tll n = this->size() - r.size() + 1;\n\t\treturn *this = (rev().pre(n)\
-    \ * r.rev().inv(n)).pre(n).rev(n);\n\t}\n\tP& operator%=(const P& r) {\n\t\t*this\
-    \ -= *this / r * r;\n\t\tshrink();\n\t\treturn *this;\n\t}\n\tpair<P, P> div_mod(const\
-    \ P& r) {\n\t\tP q = *this / r;\n\t\tP x = *this - q * r;\n\t\tx.shrink();\n\t\
-    \treturn make_pair(q, x);\n\t}\n\tP operator-() const {\n\t\tP ret(size());\n\t\
-    \trep(i, size()) ret[i] = -(*this)[i];\n\t\treturn ret;\n\t}\n\tP& operator+=(const\
-    \ T& v) {\n\t\tif (this->empty()) this->resize(1);\n\t\t(*this)[0] += v;\n\t\t\
-    return *this;\n\t}\n\tP& operator-=(const T& v) {\n\t\tif (this->empty()) this->resize(1);\n\
-    \t\t(*this)[0] -= v;\n\t\treturn *this;\n\t}\n\tP& operator*=(const T& v) {\n\t\
-    \trep(i, size()) (*this)[i] = modmul((*this)[i], v, mod);\n\t\treturn *this;\n\
-    \t}\n\tP dot(P r) const {\n\t\tP ret(min(this->size(), r.size()));\n\t\trep(i,\
-    \ ret.size()) ret[i] = modmul((*this)[i], r[i], mod);\n\t\treturn ret;\n\t}\n\t\
-    P operator>>(ll sz) const {\n\t\tif (size() <= sz) return {};\n\t\tP ret(*this);\n\
-    \t\tret.erase(ret.begin(), ret.begin() + sz);\n\t\treturn ret;\n\t}\n\tP operator<<(ll\
-    \ sz) const {\n\t\tP ret(*this);\n\t\tret.insert(ret.begin(), sz, T(0));\n\t\t\
-    return ret;\n\t}\n\tT operator()(T x) const {\n\t\tT r = 0, w = 1;\n\t\tfor (auto&\
-    \ v : *this) {\n\t\t\tr += w * v;\n\t\t\tw *= x;\n\t\t}\n\t\treturn r;\n\t}\n\t\
-    P diff() const {\n\t\tconst ll n = size();\n\t\tP ret(max(0ll, n - 1));\n\t\t\
-    reps(i, 1, n) ret[i - 1] = modmul((*this)[i], T(i), mod);\n\t\treturn ret;\n\t\
-    }\n\tP integral() const {\n\t\tconst ll n = size();\n\t\tP ret(n + 1);\n\t\trep(i,\
-    \ n) ret[i + 1] = modmul(freq(i), modinv(T(i + 1), mod), mod);\n\t\treturn ret;\n\
-    \t}\n\tP inv(ll deg = -1) const {\n\t\tif (deg == -1) deg = size();\n\t\tP res\
-    \ = P({modmul(T(1), modinv(freq(0), mod), mod)});\n\t\tfor (ll i = 1; i < deg;\
-    \ i *= 2) {\n\t\t\tres = (res * T(2) - res * res * pre(2 * i)).pre(2 * i);\n\t\
-    \t}\n\t\treturn res.pre(deg);\n\t}\n\tP exp(ll n = -1) const {\n\t\tassert(freq(0)\
-    \ == T(0));\n\t\tif (n == -1) n = size();\n\t\tP g = P({T(1)});\n\t\tfor (ll i\
-    \ = 1; i < n; i *= 2) {\n\t\t\tg = (g * (pre(i * 2) + P({T(1)}) - g.log(i * 2))).pre(i\
-    \ * 2);\n\t\t}\n\t\treturn g.pre(n);\n\t}\n\tP log(ll n = -1) const {\n\t\tif\
-    \ (n == -1) n = size();\n\t\tassert(freq(0) == T(1));\n\t\tauto f = pre(n);\n\t\
-    \treturn (f.diff() * f.inv(n - 1)).pre(n - 1).integral();\n\t}\n\tP sqrt(ll deg\
-    \ = -1) const {\n\t\tconst ll n = size();\n\t\tif (deg == -1) deg = n;\n\t\tif\
-    \ ((*this)[0] == T(0)) {\n\t\t\treps(i, 1, n) {\n\t\t\t\tif ((*this)[i] != T(0))\
-    \ {\n\t\t\t\t\tif (i & 1) return {};\n\t\t\t\t\tif (deg - i / 2 <= 0) break;\n\
-    \t\t\t\t\tauto ret = (*this >> i).sqrt(deg - i / 2);\n\t\t\t\t\tif (ret.empty())\
-    \ return {};\n\t\t\t\t\tret = ret << (i / 2);\n\t\t\t\t\tif (ret.size() < deg)\
-    \ ret.resize(deg, T(0));\n\t\t\t\t\treturn ret;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn\
-    \ P(deg);\n\t\t}\n\t\tauto sqr = T(modsqrt((*this)[0], mod));\n\t\tif (abs(modmul(sqr,\
-    \ sqr, mod) - (*this)[0]) % mod != 0) return {};\n\t\tP ret{sqr};\n\t\tT inv2\
-    \ = modinv(T(2), mod);\n\t\tfor (ll i = 1; i < deg; i <<= 1) {\n\t\t\tret = (ret\
-    \ + pre(i << 1) * ret.inv(i << 1)) * inv2;\n\t\t}\n\t\treturn ret.pre(deg);\n\t\
-    }\n\tP pow(ll k, ll n = -1) {\n\t\tif (n == -1) n = size();\n\t\tif (k == 0) {\n\
-    \t\t\tP res(n);\n\t\t\tres[0] = T(1);\n\t\t\treturn res;\n\t\t}\n\t\trep(i, size())\
+    \ ll g) {\n\t\tmod = md;\n\t\troot = g;\n\t}\n\t\n\tP pre(ll def) const {\n\t\t\
+    return P(begin(*this), begin(*this) + min((ll)this->size(), def));\n\t}\n\tP rev(ll\
+    \ deg = -1) const {\n\t\tP ret(*this);\n\t\tif (deg != -1) ret.resize(deg, T(0));\n\
+    \t\treverse(all(ret));\n\t\treturn ret;\n\t}\n\n\tvoid shrink() {\n\t\twhile (this->size()\
+    \ && !this->back()) this->pop_back();\n\t}\n\n\tT freq(ll p) const { return (p\
+    \ < (ll)this->size()) ? (*this)[p] : T(0); }\n\n\tP operator+(const P& r) const\
+    \ { return P(*this) += r; }\n\tP operator+(const T& v) const { return P(*this)\
+    \ += v; }\n\tP operator-(const P& r) const { return P(*this) -= r; }\n\tP operator-(const\
+    \ T& v) const { return P(*this) -= v; }\n\tP operator*(const P& r) const { return\
+    \ P(*this) *= r; }\n\tP operator*(const T& v) const { return P(*this) *= v; }\n\
+    \tP operator/(const P& r) const { return P(*this) /= r; }\n\tP operator%(const\
+    \ P& r) const { return P(*this) %= r; }\n\n\tP& operator+=(const P& r) {\n\t\t\
+    if (sz(r) > (ll)this->size()) this->resize(sz(r));\n\t\trep(i, sz(r)) (*this)[i]\
+    \ += r[i];\n\t\treturn *this;\n\t}\n\tP& operator-=(const P& r) {\n\t\tif (sz(r)\
+    \ > (ll)this->size()) this->resize(sz(r));\n\t\trep(i, sz(r)) (*this)[i] = (*this)[i]\
+    \ - r[i] + (r[i] > (*this)[i] ? mod : 0ll);\n\t\treturn *this;\n\t}\n\n\tP& operator*=(const\
+    \ P& r) {\n\t\tif (this->empty() || r.empty()) {\n\t\t\tthis->clear();\n\t\t\t\
+    return *this;\n\t\t}\n\t\tauto ret = conv(*this, r);\n\t\treturn *this = {all(ret)};\n\
+    \t}\n\tP& operator/=(const P& r) {\n\t\tif (this->size() < r.size()) {\n\t\t\t\
+    this->clear();\n\t\t\treturn *this;\n\t\t}\n\t\tll n = this->size() - r.size()\
+    \ + 1;\n\t\treturn *this = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n\t\
+    }\n\tP& operator%=(const P& r) {\n\t\t*this -= *this / r * r;\n\t\tshrink();\n\
+    \t\treturn *this;\n\t}\n\tpair<P, P> div_mod(const P& r) {\n\t\tP q = *this /\
+    \ r;\n\t\tP x = *this - q * r;\n\t\tx.shrink();\n\t\treturn make_pair(q, x);\n\
+    \t}\n\tP operator-() const {\n\t\tP ret(sz(this));\n\t\trep(i, sz(this)) ret[i]\
+    \ = -(*this)[i];\n\t\treturn ret;\n\t}\n\tP& operator+=(const T& v) {\n\t\tif\
+    \ (this->empty()) this->resize(1);\n\t\t(*this)[0] += v;\n\t\treturn *this;\n\t\
+    }\n\tP& operator-=(const T& v) {\n\t\tif (this->empty()) this->resize(1);\n\t\t\
+    (*this)[0] -= v;\n\t\treturn *this;\n\t}\n\tP& operator*=(const T& v) {\n\t\t\
+    rep(i, (ll)this->size()) (*this)[i] = modmul((*this)[i], v, mod);\n\t\treturn\
+    \ *this;\n\t}\n\tP dot(P r) const {\n\t\tP ret(min(this->size(), r.size()));\n\
+    \t\trep(i, sz(ret)) ret[i] = modmul((*this)[i], r[i], mod);\n\t\treturn ret;\n\
+    \t}\n\tP operator>>(ll sz) const {\n\t\tif ((ll)this->size() <= sz) return {};\n\
+    \t\tP ret(*this);\n\t\tret.erase(ret.begin(), ret.begin() + sz);\n\t\treturn ret;\n\
+    \t}\n\tP operator<<(ll sz) const {\n\t\tP ret(*this);\n\t\tret.insert(ret.begin(),\
+    \ sz, T(0));\n\t\treturn ret;\n\t}\n\tT operator()(T x) const {\n\t\tT r = 0,\
+    \ w = 1;\n\t\tfor (auto& v : *this) {\n\t\t\tr += w * v;\n\t\t\tw *= x;\n\t\t\
+    }\n\t\treturn r;\n\t}\n\tP diff() const {\n\t\tconst ll n = (ll)this->size();\n\
+    \t\tP ret(max(0ll, n - 1));\n\t\treps(i, 1, n) ret[i - 1] = modmul((*this)[i],\
+    \ T(i), mod);\n\t\treturn ret;\n\t}\n\tP integral() const {\n\t\tconst ll n =\
+    \ (ll)this->size();\n\t\tP ret(n + 1);\n\t\trep(i, n) ret[i + 1] = modmul(freq(i),\
+    \ modinv(T(i + 1), mod), mod);\n\t\treturn ret;\n\t}\n\tP inv(ll deg = -1) const\
+    \ {\n\t\tif (deg == -1) deg = (ll)this->size();\n\t\tP res = P({modmul(T(1), modinv(freq(0),\
+    \ mod), mod)});\n\t\tfor (ll i = 1; i < deg; i *= 2) {\n\t\t\tres = (res * T(2)\
+    \ - res * res * pre(2 * i)).pre(2 * i);\n\t\t}\n\t\treturn res.pre(deg);\n\t}\n\
+    \tP exp(ll n = -1) const {\n\t\tassert(freq(0) == T(0));\n\t\tif (n == -1) n =\
+    \ (ll)this->size();\n\t\tP g = P({T(1)});\n\t\tfor (ll i = 1; i < n; i *= 2) {\n\
+    \t\t\tg = (g * (pre(i * 2) + P({T(1)}) - g.log(i * 2))).pre(i * 2);\n\t\t}\n\t\
+    \treturn g.pre(n);\n\t}\n\tP log(ll n = -1) const {\n\t\tif (n == -1) n = (ll)this->size();\n\
+    \t\tassert(freq(0) == T(1));\n\t\tauto f = pre(n);\n\t\treturn (f.diff() * f.inv(n\
+    \ - 1)).pre(n - 1).integral();\n\t}\n\tP sqrt(ll deg = -1) const {\n\t\tconst\
+    \ ll n = (ll)this->size();\n\t\tif (deg == -1) deg = n;\n\t\tif ((*this)[0] ==\
+    \ T(0)) {\n\t\t\treps(i, 1, n) {\n\t\t\t\tif ((*this)[i] != T(0)) {\n\t\t\t\t\t\
+    if (i & 1) return {};\n\t\t\t\t\tif (deg - i / 2 <= 0) break;\n\t\t\t\t\tauto\
+    \ ret = (*this >> i).sqrt(deg - i / 2);\n\t\t\t\t\tif (ret.empty()) return {};\n\
+    \t\t\t\t\tret = ret << (i / 2);\n\t\t\t\t\tif (sz(ret) < deg) ret.resize(deg,\
+    \ T(0));\n\t\t\t\t\treturn ret;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn P(deg);\n\t\t\
+    }\n\t\tauto sqr = T(modsqrt((*this)[0], mod));\n\t\tif (abs(modmul(sqr, sqr, mod)\
+    \ - (*this)[0]) % mod != 0) return {};\n\t\tP ret{sqr};\n\t\tT inv2 = modinv(T(2),\
+    \ mod);\n\t\tfor (ll i = 1; i < deg; i <<= 1) {\n\t\t\tret = (ret + pre(i << 1)\
+    \ * ret.inv(i << 1)) * inv2;\n\t\t}\n\t\treturn ret.pre(deg);\n\t}\n\tP pow(ll\
+    \ k, ll n = -1) {\n\t\tif (n == -1) n = (ll)this->size();\n\t\tif (k == 0) {\n\
+    \t\t\tP res(n);\n\t\t\tres[0] = T(1);\n\t\t\treturn res;\n\t\t}\n\t\trep(i, (ll)this->size())\
     \ {\n\t\t\tif ((*this)[i]) {\n\t\t\t\tT rev = modmul(T(1), modinv((*this)[i],\
     \ mod), mod);\n\t\t\t\tP ret = (((*this * rev) >> i).log(n) * T(k)).exp(n);\n\t\
     \t\t\tret *= modpow((*this)[i], k, mod);\n\t\t\t\tret = (ret << (i * k)).pre(n);\n\
@@ -204,9 +208,10 @@ data:
   isVerificationFile: false
   path: library/tree/FrequencyTreeDistance.hpp
   requiredBy: []
-  timestamp: '2025-10-31 18:20:20+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2025-11-01 07:18:59+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/yosupo/frequency-tree-distance.test.cpp
 documentation_of: library/tree/FrequencyTreeDistance.hpp
 layout: document
 redirect_from:

@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/fps/fps.hpp
     title: library/fps/fps.hpp
   - icon: ':warning:'
     path: library/math/modint.hpp
     title: library/math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/math/modula.hpp
     title: library/math/modula.hpp
   - icon: ':heavy_check_mark:'
@@ -17,25 +17,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/structure/UnionFind.hpp
     title: library/structure/UnionFind.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: library/tree/CentroidDecomposition.hpp
     title: library/tree/CentroidDecomposition.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: library/tree/FrequencyTreeDistance.hpp
     title: library/tree/FrequencyTreeDistance.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yosupo/convolution-mod.test.cpp
     title: verify/yosupo/convolution-mod.test.cpp
+  - icon: ':x:'
+    path: verify/yosupo/frequency-tree-distance.test.cpp
+    title: verify/yosupo/frequency-tree-distance.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yosupo/point-add-range-sum.test.cpp
     title: verify/yosupo/point-add-range-sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yosupo/unionfind.test.cpp
     title: verify/yosupo/unionfind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/template/template.hpp\"\n\n#include <bits/stdc++.h>\n\
@@ -98,9 +101,10 @@ data:
   - library/tree/CentroidDecomposition.hpp
   - library/tree/FrequencyTreeDistance.hpp
   timestamp: '2025-10-31 18:20:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yosupo/unionfind.test.cpp
+  - verify/yosupo/frequency-tree-distance.test.cpp
   - verify/yosupo/point-add-range-sum.test.cpp
   - verify/yosupo/convolution-mod.test.cpp
 documentation_of: library/template/template.hpp

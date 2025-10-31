@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.hpp
     title: library/template/template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/yosupo/frequency-tree-distance.test.cpp
+    title: verify/yosupo/frequency-tree-distance.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/tree/CentroidDecomposition.hpp\"\n\n#line 2 \"library/template/template.hpp\"\
@@ -70,8 +73,9 @@ data:
   path: library/tree/CentroidDecomposition.hpp
   requiredBy: []
   timestamp: '2025-10-31 18:20:20+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/yosupo/frequency-tree-distance.test.cpp
 documentation_of: library/tree/CentroidDecomposition.hpp
 layout: document
 redirect_from:
