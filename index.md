@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: library/fps
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/fps/fps.hpp
       title: library/fps/fps.hpp
   - name: library/math
@@ -11,7 +11,7 @@ data:
     - icon: ':warning:'
       path: library/math/modint.hpp
       title: library/math/modint.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/math/modula.hpp
       title: library/math/modula.hpp
   - name: library/structure
@@ -24,24 +24,24 @@ data:
       title: library/structure/UnionFind.hpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.hpp
       title: library/template/template.hpp
   - name: library/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/tree/CentroidDecomposition.hpp
       title: library/tree/CentroidDecomposition.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/tree/FrequencyTreeDistance.hpp
       title: library/tree/FrequencyTreeDistance.hpp
   verificationCategories:
   - name: verify/yosupo
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yosupo/convolution-mod.test.cpp
       title: verify/yosupo/convolution-mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yosupo/frequency-tree-distance.test.cpp
       title: verify/yosupo/frequency-tree-distance.test.cpp
     - icon: ':heavy_check_mark:'

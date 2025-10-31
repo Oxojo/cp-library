@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/fps/fps.hpp
     title: library/fps/fps.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/math/modula.hpp
     title: library/math/modula.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.hpp
     title: library/template/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/tree/CentroidDecomposition.hpp
     title: library/tree/CentroidDecomposition.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/tree/FrequencyTreeDistance.hpp
     title: library/tree/FrequencyTreeDistance.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
@@ -112,7 +112,7 @@ data:
     }\n\tP& operator%=(const P& r) {\n\t\t*this -= *this / r * r;\n\t\tshrink();\n\
     \t\treturn *this;\n\t}\n\tpair<P, P> div_mod(const P& r) {\n\t\tP q = *this /\
     \ r;\n\t\tP x = *this - q * r;\n\t\tx.shrink();\n\t\treturn make_pair(q, x);\n\
-    \t}\n\tP operator-() const {\n\t\tP ret((ll)this->size());\n\t\trep(i, ll)this->size())\
+    \t}\n\tP operator-() const {\n\t\tP ret((ll)this->size());\n\t\trep(i, (ll)this->size())\
     \ ret[i] = -(*this)[i];\n\t\treturn ret;\n\t}\n\tP& operator+=(const T& v) {\n\
     \t\tif (this->empty()) this->resize(1);\n\t\t(*this)[0] += v;\n\t\treturn *this;\n\
     \t}\n\tP& operator-=(const T& v) {\n\t\tif (this->empty()) this->resize(1);\n\t\
@@ -225,8 +225,8 @@ data:
   isVerificationFile: true
   path: verify/yosupo/frequency-tree-distance.test.cpp
   requiredBy: []
-  timestamp: '2025-11-01 07:23:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-01 07:26:02+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo/frequency-tree-distance.test.cpp
 layout: document

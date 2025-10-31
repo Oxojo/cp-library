@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/fps/fps.hpp
     title: library/fps/fps.hpp
   - icon: ':warning:'
     path: library/math/modint.hpp
     title: library/math/modint.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/math/modula.hpp
     title: library/math/modula.hpp
   - icon: ':heavy_check_mark:'
@@ -17,17 +17,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/structure/UnionFind.hpp
     title: library/structure/UnionFind.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/tree/CentroidDecomposition.hpp
     title: library/tree/CentroidDecomposition.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/tree/FrequencyTreeDistance.hpp
     title: library/tree/FrequencyTreeDistance.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo/convolution-mod.test.cpp
     title: verify/yosupo/convolution-mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo/frequency-tree-distance.test.cpp
     title: verify/yosupo/frequency-tree-distance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,9 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo/unionfind.test.cpp
     title: verify/yosupo/unionfind.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/template/template.hpp\"\n\n#include <bits/stdc++.h>\n\
@@ -101,7 +101,7 @@ data:
   - library/tree/CentroidDecomposition.hpp
   - library/tree/FrequencyTreeDistance.hpp
   timestamp: '2025-10-31 18:20:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo/unionfind.test.cpp
   - verify/yosupo/frequency-tree-distance.test.cpp

@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.hpp
     title: library/template/template.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/fps/fps.hpp
     title: library/fps/fps.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/tree/FrequencyTreeDistance.hpp
     title: library/tree/FrequencyTreeDistance.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo/convolution-mod.test.cpp
     title: verify/yosupo/convolution-mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo/frequency-tree-distance.test.cpp
     title: verify/yosupo/frequency-tree-distance.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/math/modula.hpp\"\n\n#line 2 \"library/template/template.hpp\"\
@@ -94,7 +94,7 @@ data:
   - library/fps/fps.hpp
   - library/tree/FrequencyTreeDistance.hpp
   timestamp: '2025-10-31 18:20:20+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo/frequency-tree-distance.test.cpp
   - verify/yosupo/convolution-mod.test.cpp
