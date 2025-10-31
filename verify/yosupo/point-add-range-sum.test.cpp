@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
 #include "../../library/template/template.hpp"
-#include "../../library/structure/fenwicktree.hpp"
+#include "../../library/structure/FenwickTree.hpp"
 void solve() {
     ll n, q; cin >> n >> q;
     vl a(n); cin >> a;
