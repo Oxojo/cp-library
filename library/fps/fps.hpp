@@ -116,8 +116,8 @@ public:
 		return make_pair(q, x);
 	}
 	P operator-() const {
-		P ret(sz(this));
-		rep(i, sz(this)) ret[i] = -(*this)[i];
+		P ret((ll)this->size());
+		rep(i, ll)this->size()) ret[i] = -(*this)[i];
 		return ret;
 	}
 	P& operator+=(const T& v) {
@@ -136,7 +136,7 @@ public:
 	}
 	P dot(P r) const {
 		P ret(min(this->size(), r.size()));
-		rep(i, sz(ret)) ret[i] = modmul((*this)[i], r[i], mod);
+		rep(i, ret.size()) ret[i] = modmul((*this)[i], r[i], mod);
 		return ret;
 	}
 	P operator>>(ll sz) const {
