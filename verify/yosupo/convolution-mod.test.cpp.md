@@ -105,14 +105,14 @@ data:
     }\n\tP& operator%=(const P& r) {\n\t\t*this -= *this / r * r;\n\t\tshrink();\n\
     \t\treturn *this;\n\t}\n\tpair<P, P> div_mod(const P& r) {\n\t\tP q = *this /\
     \ r;\n\t\tP x = *this - q * r;\n\t\tx.shrink();\n\t\treturn make_pair(q, x);\n\
-    \t}\n\tP operator-() const {\n\t\tP ret(sz(this));\n\t\trep(i, sz(this)) ret[i]\
-    \ = -(*this)[i];\n\t\treturn ret;\n\t}\n\tP& operator+=(const T& v) {\n\t\tif\
-    \ (this->empty()) this->resize(1);\n\t\t(*this)[0] += v;\n\t\treturn *this;\n\t\
-    }\n\tP& operator-=(const T& v) {\n\t\tif (this->empty()) this->resize(1);\n\t\t\
-    (*this)[0] -= v;\n\t\treturn *this;\n\t}\n\tP& operator*=(const T& v) {\n\t\t\
+    \t}\n\tP operator-() const {\n\t\tP ret((ll)this->size());\n\t\trep(i, ll)this->size())\
+    \ ret[i] = -(*this)[i];\n\t\treturn ret;\n\t}\n\tP& operator+=(const T& v) {\n\
+    \t\tif (this->empty()) this->resize(1);\n\t\t(*this)[0] += v;\n\t\treturn *this;\n\
+    \t}\n\tP& operator-=(const T& v) {\n\t\tif (this->empty()) this->resize(1);\n\t\
+    \t(*this)[0] -= v;\n\t\treturn *this;\n\t}\n\tP& operator*=(const T& v) {\n\t\t\
     rep(i, (ll)this->size()) (*this)[i] = modmul((*this)[i], v, mod);\n\t\treturn\
     \ *this;\n\t}\n\tP dot(P r) const {\n\t\tP ret(min(this->size(), r.size()));\n\
-    \t\trep(i, sz(ret)) ret[i] = modmul((*this)[i], r[i], mod);\n\t\treturn ret;\n\
+    \t\trep(i, ret.size()) ret[i] = modmul((*this)[i], r[i], mod);\n\t\treturn ret;\n\
     \t}\n\tP operator>>(ll sz) const {\n\t\tif ((ll)this->size() <= sz) return {};\n\
     \t\tP ret(*this);\n\t\tret.erase(ret.begin(), ret.begin() + sz);\n\t\treturn ret;\n\
     \t}\n\tP operator<<(ll sz) const {\n\t\tP ret(*this);\n\t\tret.insert(ret.begin(),\
@@ -176,7 +176,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo/convolution-mod.test.cpp
   requiredBy: []
-  timestamp: '2025-11-01 07:18:59+09:00'
+  timestamp: '2025-11-01 07:23:04+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yosupo/convolution-mod.test.cpp
