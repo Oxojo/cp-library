@@ -1,3 +1,7 @@
+#pragma once
+
+#include "../template/template.hpp"
+
 ll modmul(ll a, ll b, ll mod) { return __int128(a) * b % mod; }
 ll modpow(ll a, ll b, ll mod) {
   ll ans = 1;

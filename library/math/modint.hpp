@@ -1,4 +1,6 @@
-#include "template.hpp"
+#pragma once
+
+#include "../template/template.hpp"
 const ll mod = mod2;
 struct mint {
 	ll x;

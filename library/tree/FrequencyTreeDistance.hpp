@@ -1,5 +1,7 @@
-#include "template.hpp"
-#include "fps.hpp"
+#pragma once
+
+#include "../template/template.hpp"
+#include "../fps/fps.hpp"
 template <class G>
 struct FrequenceTreeDistance : CentroidDecomposition<G> {
 	using CentroidDecomposition<G>::g;

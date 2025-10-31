@@ -1,3 +1,8 @@
+#pragma once
+
+#include "../template/template.hpp"
+#include "../math/modula.hpp"
+
 template <typename T = ll>
 struct FPS : vector<T> {
 private:

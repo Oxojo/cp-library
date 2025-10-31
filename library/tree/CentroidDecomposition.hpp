@@ -1,4 +1,6 @@
-#include "template.hpp"
+#pragma once
+
+#include "../template/template.hpp"
 template <class G>
 struct CentroidDecomposition {
 	const G &g;
