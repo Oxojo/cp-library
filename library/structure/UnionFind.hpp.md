@@ -4,14 +4,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/template/template.hpp
     title: library/template/template.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/yosupo/unionfind.cpp
-    title: verify/yosupo/unionfind.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo/unionfind.test.cpp
+    title: verify/yosupo/unionfind.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/structure/UnionFind.hpp\"\n\n#line 2 \"library/template/template.hpp\"\
@@ -55,11 +55,11 @@ data:
   - library/template/template.hpp
   isVerificationFile: false
   path: library/structure/UnionFind.hpp
-  requiredBy:
-  - verify/yosupo/unionfind.cpp
+  requiredBy: []
   timestamp: '2025-11-01 02:09:45+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/yosupo/unionfind.test.cpp
 documentation_of: library/structure/UnionFind.hpp
 layout: document
 redirect_from:

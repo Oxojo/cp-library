@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/structure/FenwickTree.hpp
     title: library/structure/FenwickTree.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: library/structure/UnionFind.hpp
     title: library/structure/UnionFind.hpp
   - icon: ':warning:'
@@ -23,9 +23,6 @@ data:
   - icon: ':warning:'
     path: library/tree/FrequencyTreeDistance.hpp
     title: library/tree/FrequencyTreeDistance.hpp
-  - icon: ':warning:'
-    path: verify/yosupo/unionfind.cpp
-    title: verify/yosupo/unionfind.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo/convolution-mod.test.cpp
@@ -33,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo/point-add-range-sum.test.cpp
     title: verify/yosupo/point-add-range-sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo/unionfind.test.cpp
+    title: verify/yosupo/unionfind.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -97,10 +97,10 @@ data:
   - library/fps/fps.hpp
   - library/tree/CentroidDecomposition.hpp
   - library/tree/FrequencyTreeDistance.hpp
-  - verify/yosupo/unionfind.cpp
   timestamp: '2025-10-31 18:20:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/yosupo/unionfind.test.cpp
   - verify/yosupo/point-add-range-sum.test.cpp
   - verify/yosupo/convolution-mod.test.cpp
 documentation_of: library/template/template.hpp

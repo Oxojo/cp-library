@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: library/structure/UnionFind.hpp
     title: library/structure/UnionFind.hpp
   - icon: ':heavy_check_mark:'
@@ -11,11 +11,13 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/unionfind
     links:
     - https://judge.yosupo.jp/problem/unionfind
-  bundledCode: "#line 1 \"verify/yosupo/unionfind.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\
+  bundledCode: "#line 1 \"verify/yosupo/unionfind.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\
     \n\n#line 2 \"library/template/template.hpp\"\n\n#include <bits/stdc++.h>\nusing\
     \ namespace std;\n#define MM << ' ' <<\nusing ll = long long;\nusing ld = long\
     \ double;\nusing pll = pair<ll, ll>;\nusing vl = vector<ll>;\ntemplate <class\
@@ -46,7 +48,7 @@ data:
     \ y = find(y);\n\t\tif (x == y) return false;\n\t\tif (data[x] > data[y]) swap(x,\
     \ y);\n\t\tdata[x] += data[y];\n\t\tdata[y] = x;\n\t\treturn true;\n\t}\n\n\t\
     ll size(ll k) {\n\t\treturn -data[find(k)];\n\t}\n\n\tbool same(ll x, ll y) {\n\
-    \t\treturn find(x) == find(y);\n\t}\n};\n#line 5 \"verify/yosupo/unionfind.cpp\"\
+    \t\treturn find(x) == find(y);\n\t}\n};\n#line 5 \"verify/yosupo/unionfind.test.cpp\"\
     \n\nvoid solve() {\n    ll n, q; cin >> n >> q;\n\tUnionFind uf(n);\n\twhile (q--)\
     \ {\n\t\tll t; cin >> t;\n\t\tif (t == 0) {\n\t\t\tll u, v; cin >> u >> v;\n\t\
     \t\tuf.unite(u, v);\n\t\t}\n\t\telse {\n\t\t\tll u, v; cin >> u >> v;\n\t\t\t\
@@ -62,16 +64,16 @@ data:
   dependsOn:
   - library/template/template.hpp
   - library/structure/UnionFind.hpp
-  isVerificationFile: false
-  path: verify/yosupo/unionfind.cpp
+  isVerificationFile: true
+  path: verify/yosupo/unionfind.test.cpp
   requiredBy: []
-  timestamp: '2025-11-01 02:09:45+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2025-11-01 06:58:30+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/yosupo/unionfind.cpp
+documentation_of: verify/yosupo/unionfind.test.cpp
 layout: document
 redirect_from:
-- /library/verify/yosupo/unionfind.cpp
-- /library/verify/yosupo/unionfind.cpp.html
-title: verify/yosupo/unionfind.cpp
+- /verify/verify/yosupo/unionfind.test.cpp
+- /verify/verify/yosupo/unionfind.test.cpp.html
+title: verify/yosupo/unionfind.test.cpp
 ---

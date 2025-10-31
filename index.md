@@ -19,7 +19,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/structure/FenwickTree.hpp
       title: library/structure/FenwickTree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/structure/UnionFind.hpp
       title: library/structure/UnionFind.hpp
   - name: library/template
@@ -35,11 +35,6 @@ data:
     - icon: ':warning:'
       path: library/tree/FrequencyTreeDistance.hpp
       title: library/tree/FrequencyTreeDistance.hpp
-  - name: verify/yosupo
-    pages:
-    - icon: ':warning:'
-      path: verify/yosupo/unionfind.cpp
-      title: verify/yosupo/unionfind.cpp
   verificationCategories:
   - name: verify/yosupo
     pages:
@@ -49,5 +44,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo/point-add-range-sum.test.cpp
       title: verify/yosupo/point-add-range-sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yosupo/unionfind.test.cpp
+      title: verify/yosupo/unionfind.test.cpp
 layout: toppage
 ---
