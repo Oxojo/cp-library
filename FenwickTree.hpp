@@ -1,4 +1,3 @@
-#include "template.hpp"
 template <typename T = ll>
 struct FenwickTree {
     ll n;
