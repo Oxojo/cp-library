@@ -117,7 +117,7 @@ public:
 	}
 	P operator-() const {
 		P ret((ll)this->size());
-		rep(i, ll)this->size()) ret[i] = -(*this)[i];
+		rep(i, (ll)this->size()) ret[i] = -(*this)[i];
 		return ret;
 	}
 	P& operator+=(const T& v) {
