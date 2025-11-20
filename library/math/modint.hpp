@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../template/template.hpp"
-const ll mod = mod2;
+template <ll mod>
 struct mint {
 	ll x;
 	mint(ll y = 0) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}
