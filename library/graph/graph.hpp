@@ -20,7 +20,7 @@ struct Graph {
 
     explicit Graph(ll n) : g(n) {}
 
-    ll size() const { return sz(g); }
+    size_t size() const { return g.size(); }
 
     void add(ll from, ll to, T cost = 1, bool direct = false) {
         g[from].emplace_back(from, to, cost);

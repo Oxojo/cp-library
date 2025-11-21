@@ -6,7 +6,7 @@ using namespace std;
 using ll = long long;
 using ld = long double;
 using pll = pair<ll, ll>;
-using vl = vec<ll>;
+using vl = vector<ll>;
 template <class T> using vec = vector<T>;
 template <class T> using vv = vec<vec<T>>;
 template <class T> using vvv = vv<vec<T>>;
