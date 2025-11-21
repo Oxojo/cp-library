@@ -21,7 +21,7 @@ public:
         use.assign(sz(g), 0);
         rep(i,sz(g)) dfs(i);
         rev(ord);
-        ll prt = 0;
+        ll ptr = 0;
         for (ll i : ord) {
             if (cmp[i] == -1) rdfs(i, ptr), ptr++;
         }

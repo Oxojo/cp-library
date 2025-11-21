@@ -10,6 +10,8 @@ struct Edge {
     Edge() = default;
 
     Edge(ll from, ll to, T cost = T(1)) : from(from), to(to), cost(cost) {}
+
+	operator ll() const { return to; }
 };
 
 template <typename T = ll>
@@ -24,22 +26,22 @@ struct Graph {
 
     void add(ll from, ll to, T cost = 1, bool direct = false) {
         g[from].emplace_back(from, to, cost);
-        if (direct) g[to].emplace_back(to, from, cost);
+        if (!direct) g[to].emplace_back(to, from, cost);
     }
 
-    void read(ll m, ll padding = -1, bool weigtht = false, bool direct = false) {
+    void read(ll m, ll padding = -1, bool weight = false, bool direct = false) {
         rep(i, m) {
             ll a, b; cin >> a >> b;
             a += padding, b += padding;
             T c = T(1);
             if (weight) cin >> c;
-            add(from, to, cost, direct);
+            add(a, b, c, direct);
         }
     }
 
     inline vec<Edge<T>>& operator[](const ll& k) { return g[k]; }
 
-    inline const vec<Edge<T>>& operator[](const ll& k) { return g[k]; }
+    inline const vec<Edge<T>>& operator[](const ll& k) const { return g[k]; }
 };
 
-template<typename T = ll> using Edges = vec<Edge<T>>;
+template <typename T = ll> using Edges = vec<Edge<T>>;
