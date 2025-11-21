@@ -2,5 +2,6 @@
 "verify/yosupo/convolution-mod.test.cpp": "2025-11-22 01:31:53 +0900",
 "verify/yosupo/frequency-tree-distance.test.cpp": "2025-11-22 01:31:53 +0900",
 "verify/yosupo/point-add-range-sum.test.cpp": "2025-11-22 01:31:53 +0900",
+"verify/yosupo/scc.test.cpp": "2025-11-22 01:48:32 +0900",
 "verify/yosupo/unionfind.test.cpp": "2025-11-22 01:31:53 +0900"
 }
