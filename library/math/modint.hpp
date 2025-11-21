@@ -42,4 +42,7 @@ struct mint {
 		}
 		return ret;
 	}
+	ll get() const {
+		return x;
+	}
 };
