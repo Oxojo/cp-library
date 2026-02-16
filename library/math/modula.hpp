@@ -2,15 +2,27 @@
 
 #include "../template/template.hpp"
 
+template <typename T>
+T safe_mod(T a, T p) {
+    return a >= 0 ? a % p : (p - (-a) % p) % p;
+}
+
 ll modmul(ll a, ll b, ll mod) { return __int128(a) * b % mod; }
-ll modpow(ll a, ll b, ll mod) {
-  ll ans = 1;
-  for (; b; a = modmul(a, a, mod), b /= 2)
-    if (b & 1) ans = modmul(ans, a, mod);
-  return ans;
+
+template <typename T, typename U>
+T modpow(T a, U n, T p) {
+	a = safe_mod(a, p);
+	T ret = 1 % p;
+	while (n != 0) {
+		if (n & 1) ret = U(ret) * a % p;
+		a = U(a) * a % p;
+		n /= 2;
+	}
+	return ret;
 }
 // a^x == b (mod p), if no such x exists than -1
-ll modlog(ll a, ll b, ll p) {
+template <typename T>
+T modlog(ll a, ll b, ll p) {
     ll n = (ll)sqrtl(p) + 1, e = 1, f = 1, j = 1;
     unordered_map<ll, ll> A;
     while (j = n && (e = f = e * a % p) != b % p)
