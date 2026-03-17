@@ -1,25 +1,26 @@
-// competitive-verifier: PROBLEM "https://judge.yosupo.jp/problem/unionfind"
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/unionfind
 
 #include "../../library/template/template.hpp"
 #include "../../library/structure/UnionFind.hpp"
 
 void solve() {
-    ll n, q; cin >> n >> q;
+	ll n, q; in(n, q);
 	UnionFind uf(n);
 	while (q--) {
-		ll t; cin >> t;
+		ll t, u, v; in(t, u, v);
 		if (t == 0) {
-			ll u, v; cin >> u >> v;
 			uf.unite(u, v);
 		}
 		else {
-			ll u, v; cin >> u >> v;
-			cout << uf.same(u, v) << endl;
+			out(uf.same(u, v), "\n");
 		}
 	}
 }
 int main() {
-    ll T = 1;
-    // cin >> T;
-    while (T--) solve();
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout << fixed << setprecision(12);
+	ll T = 1;
+	// cin >> T;
+	while (T--) solve();
 }

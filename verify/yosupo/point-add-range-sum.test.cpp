@@ -1,4 +1,4 @@
-// competitive-verifier: PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/point_add_range_sum
 
 #include "../../library/template/template.hpp"
 #include "../../library/structure/FenwickTree.hpp"
@@ -20,7 +20,10 @@ void solve() {
     }
 }
 int main() {
-    ll T = 1;
-    // cin >> T;
-    while (T--) solve();
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout << fixed << setprecision(12);
+	ll T = 1;
+	// cin >> T;
+	while (T--) solve();
 }

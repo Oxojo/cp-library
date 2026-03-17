@@ -1,4 +1,4 @@
-// competitive-verifier: PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/convolution_mod
 
 #include "../../library/template/template.hpp"
 #include "../../library/math/modula.hpp"
@@ -12,7 +12,10 @@ void solve() {
     cout << c << endl;
 }
 int main() {
-    ll T = 1;
-    // cin >> T;
-    while (T--) solve();
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout << fixed << setprecision(12);
+	ll T = 1;
+	// cin >> T;
+	while (T--) solve();
 }

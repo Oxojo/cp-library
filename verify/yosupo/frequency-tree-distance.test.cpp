@@ -1,4 +1,4 @@
-// competitive-verifier: PROBLEM "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
 
 #include "../../library/template/template.hpp"
 #include "../../library/math/modula.hpp"
@@ -23,6 +23,9 @@ void solve() {
 	cout << endl;
 }
 int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout << fixed << setprecision(12);
 	ll T = 1;
 	// cin >> T;
 	while (T--) solve();

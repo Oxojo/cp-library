@@ -189,14 +189,15 @@ constexpr ll ten(ll n) {
 	for(; n; x *= x, n >>= 1) ret *= (n & 1 ? x : 1);
 	return ret;
 }
-void yesno(bool t) {
+bool yesno(bool t) {
 	cout << (t ? "Yes" : "No") << endl;
+	return t;
 }
 template <class T>
 vv<T> tramspose(const vec<T> &v) {
 	if (emp(v)) return {};
 	ll h = sz(v), w = sz(v[0]);
-	vv<T> res(w, v<T>(h, T()));
+	vv<T> res(w, vec<T>(h, T()));
 	rep(i, h) rep(j, w) {
 		res[j][i] = v[i][j];
 	}
@@ -208,7 +209,11 @@ vv<T> rotate(const vec<T> &v, bool cw = true) {
 	vv<T> res(w, vec<T>(h, T()));
 	rep(i, h) rep(j, w) {
 		if (cw) res[w - 1 - j][i] = v[i][j];
-		rep res[j][H - 1 -i ] = v[i][j];
+		else res[j][h - 1 - i] = v[i][j];
 	}
 	return res;
+}
+template <class T>
+bool sfind(set<T>&s, T key) {
+	return s.find(key) != s.end();
 }
