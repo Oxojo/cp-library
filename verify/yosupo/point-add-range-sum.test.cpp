@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
+// competitive-verifier: PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
 #include "../../library/template/template.hpp"
 #include "../../library/structure/FenwickTree.hpp"
