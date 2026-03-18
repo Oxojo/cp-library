@@ -25,16 +25,16 @@ struct Graph {
     size_t size() const { return g.size(); }
 
     void add(ll from, ll to, T cost = 1, bool direct = false) {
-        g[from].emplace_back(from, to, cost);
-        if (!direct) g[to].emplace_back(to, from, cost);
+        g[from].eb(from, to, cost);
+        if (!direct) g[to].eb(to, from, cost);
     }
 
     void read(ll m, ll padding = -1, bool weight = false, bool direct = false) {
         rep(i, m) {
-            ll a, b; cin >> a >> b;
+            ll a, b; in(a, b);
             a += padding, b += padding;
             T c = T(1);
-            if (weight) cin >> c;
+            if (weight) in(c);
             add(a, b, c, direct);
         }
     }

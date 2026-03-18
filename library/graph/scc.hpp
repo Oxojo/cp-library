@@ -20,7 +20,7 @@ public:
         cmp.assign(sz(g), -1);
         use.assign(sz(g), 0);
         rep(i,sz(g)) dfs(i);
-        rev(ord);
+        mkrev(ord);
         ll ptr = 0;
         for (ll i : ord) {
             if (cmp[i] == -1) rdfs(i, ptr), ptr++;
