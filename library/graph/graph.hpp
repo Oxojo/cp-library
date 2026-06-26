@@ -1,47 +1,41 @@
-#pragma once
-
-#include "../template/template.hpp"
-
 template <typename T = ll>
 struct Edge {
     ll from, to;
     T cost;
-    
+    int idx;
+
     Edge() = default;
-
-    Edge(ll from, ll to, T cost = T(1)) : from(from), to(to), cost(cost) {}
-
-	operator ll() const { return to; }
+    Edge(ll from, ll to, T cost = 1, int idx = -1) : from(from), to(to), cost(cost), idx(idx) {}
 };
 
 template <typename T = ll>
 struct Graph {
     vv<Edge<T>> g;
-    
-    Graph() = default;
+    ll es;
 
-    explicit Graph(ll n) : g(n) {}
+    Graph() = default;
+    explicit Graph(ll n) : g(n), es(0) {}
 
     size_t size() const { return g.size(); }
 
-    void add(ll from, ll to, T cost = 1, bool direct = false) {
-        g[from].eb(from, to, cost);
-        if (!direct) g[to].eb(to, from, cost);
+    void add(ll from, ll to, ll cost = 1, bool directed = false) {
+        g[from].emplace_back(from, to, cost, es);
+        if (!directed) g[to].emplace_back(to, from, cost, es);
+        es++;
     }
 
-    void read(ll m, ll padding = -1, bool weight = false, bool direct = false) {
-        rep(i, m) {
-            ll a, b; in(a, b);
-            a += padding, b += padding;
+    void read(ll m, ll padding = -1, bool weighted = false, bool directed = false) {
+        for (ll i = 0; i < m; i++) {
+            ll u, v; cin >> u >> v;
+            u += padding; v += padding;
             T c = T(1);
-            if (weight) in(c);
-            add(a, b, c, direct);
+            if (weighted) cin >> c;
+            add(u, v, c, directed);
         }
     }
 
-    inline vec<Edge<T>>& operator[](const ll& k) { return g[k]; }
-
-    inline const vec<Edge<T>>& operator[](const ll& k) const { return g[k]; }
+    inline vec<Edge<T>>& operator[](const ll &k) { return g[k]; }
 };
 
-template <typename T = ll> using Edges = vec<Edge<T>>;
+template <typename T = ll>
+using Edges = vec<Edge<T>>;
