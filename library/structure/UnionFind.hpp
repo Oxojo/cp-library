@@ -1,29 +1,27 @@
 #pragma once
 
-#include "../template/template.hpp"
 struct UnionFind {
-	vl data;
+    vector<int> data;
+    UnionFind(ll n) : data(n, -1) {}
 
-	UnionFind(ll n) : data(n, -1) {}
+    int root(int k) {
+        return data[k] < 0 ? k : data[k] = root(data[k]);
+    }
 
-	ll find(ll k) {
-		return data[k] < 0 ? k : data[k] = find(data[k]);
-	}
+    bool unite(int x, int y) {
+        x = root(x); y = root(y);
+        if (x == y) return false;
+        if (data[x] > data[y]) swap(x, y);
+        data[x] += data[y];
+        data[y] = x;
+        return true;
+    }
 
-	ll unite(ll x, ll y) {
-		x = find(x), y = find(y);
-		if (x == y) return false;
-		if (data[x] > data[y]) swap(x, y);
-		data[x] += data[y];
-		data[y] = x;
-		return true;
-	}
+    int size(int k) {
+        return -data[root(k)];
+    }
 
-	ll size(ll k) {
-		return -data[find(k)];
-	}
-
-	bool same(ll x, ll y) {
-		return find(x) == find(y);
-	}
+    bool same(int x, int y) {
+        return root(x) == root(y);
+    }
 };
