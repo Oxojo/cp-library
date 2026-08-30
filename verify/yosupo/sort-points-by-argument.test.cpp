@@ -1,7 +1,7 @@
 // competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/sort_points_by_argument
 
 #include "../../library/template/template.hpp"
-#include "../../library/geometry/Point.hpp"
+#include "../../library/geometry/point.hpp"
 #include "../../library/geometry/argsort.hpp"
 
 int main() {
