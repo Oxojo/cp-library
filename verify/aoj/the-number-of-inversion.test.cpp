@@ -2,7 +2,7 @@
 
 #include "../../library/template/template.hpp"
 #include "../../library/structure/FenwickTree.hpp"
-#include "../../library/dp/inversion_num.hpp"
+#include "../../library/dp/inversion_number.hpp"
 
 void solve() {
     int n; cin >> n;
