@@ -5,17 +5,18 @@
 void solve() {
     ll n, q; cin >> n >> q;
     vl a(n); cin >> a;
-    FenwickTree f(a);
+    FenwickTree<ll> f(n);
+    rep(i, n) f.apply(i, a[i]);
     while (q--) {
         ll t; cin >> t;
         if (t == 0) {
             ll p, x; cin >> p >> x;
-            f.add(p, x);
+            f.apply(p, x);
         }
         else {
             ll l, r; cin >> l >> r;
             r--;
-            cout << f.sum(l, r) << endl;
+            cout << f.prod(l, r) << endl;
         }
     }
 }
