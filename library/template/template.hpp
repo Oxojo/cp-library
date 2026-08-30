@@ -25,7 +25,6 @@ const ll INF = numeric_limits<ll>::max() / 4;
 const ld inf = numeric_limits<ld>::max() / 2;
 const ll mod1 = 1000000007;
 const ll mod2 = 998244353;
-const ld pi = 3.141592653589793238;
 
 // macro
 #define rep(i, r) for (ll i = 0; i < (r); i++)
