@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./Point.hpp"
+#include "./point.hpp"
 
 void argsort(vector<Point> &g) {
     auto half = [](const Point &p) {
