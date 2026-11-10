@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - "master"
+  pull_request:
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -11,9 +12,9 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# Allow one concurrent deployment per branch
 concurrency:
-  group: "pages"
+  group: "pages-${{ github.workflow }}-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -139,14 +140,17 @@ jobs:
           write-summary: true
 
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v4
       - name: Build with Jekyll
+        if: github.event_name != 'pull_request'
         uses: actions/jekyll-build-pages@v1
         with:
           source: _jekyll
           destination: _site
       - name: Upload artifact
         id: upload-pages
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
