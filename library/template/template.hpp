@@ -42,9 +42,15 @@ const ll mod2 = 998244353;
 template <class T> 
 ll sz(const T &t) { return (ll)t.size(); }
 template <class T>
-inline T vmax(const vec<T> &v) { return *max_element(all(v)); }
+inline T vmax(const vec<T> &v) {
+	assert(!v.empty());
+	return *max_element(all(v));
+}
 template <class T>
-inline T vmin(const vec<T> &v) { return *min_element(all(v)); }
+inline T vmin(const vec<T> &v) {
+	assert(!v.empty());
+	return *min_element(all(v));
+}
 template <class T>
 inline T Sum(const vec<T> &v) {
 	return accumulate(all(v), T(0));
@@ -57,10 +63,11 @@ template <class T>
 void mkuniq(T &a) { sort(all(a));	a.erase(unique(all(a)), a.end()); }
 template <class T>
 void mkrev(T &a) { reverse(all(a)); }
-vl mkiota(ll n) { vl ret(n); iota(all(ret), 0ll); return ret; }
+inline vl mkiota(ll n) { vl ret(n); iota(all(ret), 0ll); return ret; }
 template <class T>
-vl mkinv(vec<T> &v) {
-	vl inv(vmax(v), -1);
+vl mkinv(const vec<T> &v) {
+	if (v.empty()) return {};
+	vl inv(vmax(v) + 1, -1);
 	rep(i, sz(v)) inv[v[i]] = i;
 	return inv;
 }
@@ -82,7 +89,7 @@ vl mkcum(const vec<T> &v, bool rev = false) {
 	return ret;
 }
 template <class T>
-bool nxp(T &v) { return next_permiutation(all(v)); }
+bool nxp(T &v) { return next_permutation(all(v)); }
 
 //in-out
 template <class T1, class T2>
@@ -105,7 +112,7 @@ istream &operator>>(istream &is, vec<T> &v) {
 	for (T &in : v) is >> in;
 	return is;
 }
-istream &operator>>(istream &is, i128 &x) {
+inline istream &operator>>(istream &is, i128 &x) {
 	string s; is >> s;
 	x = 0;
 	bool flag = 0;
@@ -118,7 +125,7 @@ istream &operator>>(istream &is, i128 &x) {
 	if (flag) x = -x;
 	return is;
 }
-istream &operator>>(istream &is, u128 &x) {
+inline istream &operator>>(istream &is, u128 &x) {
 	string s; is >> s;
 	x = 0;
 	fore(c, s) {
@@ -126,7 +133,7 @@ istream &operator>>(istream &is, u128 &x) {
 	}
 	return is;
 }
-ostream &operator<<(ostream &os, i128 x) {
+inline ostream &operator<<(ostream &os, i128 x) {
 	if (x == 0) return os << 0;
 	if (x < 0) os << '-', x = -x;
 	string s;
@@ -134,20 +141,20 @@ ostream &operator<<(ostream &os, i128 x) {
 	mkrev(s);
 	return os << s;
 }
-ostream &operator<<(ostream &os, u128 x) {
+inline ostream &operator<<(ostream &os, u128 x) {
 	if (x == 0) return os << 0;
 	string s;
 	while (x) s.pb('0' + x % 10), x /= 10;
 	mkrev(s);
 	return os << s;
 }
-void in(){}
+inline void in(){}
 template <class T, class... U>
 void in(T &t, U &...u) {
 	cin >> t;
 	in(u...);
 }
-void out(){}
+inline void out(){}
 template <class T, class...U, char sep = ' '>
 void out(const T &t, const U &...u) {
 	cout << t;
@@ -156,9 +163,9 @@ void out(const T &t, const U &...u) {
 }
 
 // func for bit
-ll popcnt(ll &a) { return __builtin_popcountll(a); }
+inline ll popcnt(const ll &a) { return __builtin_popcountll(a); }
 inline int lsb(const ull &a) { return a ? __builtin_ctzll(a) : 64; }
-inline int msb(const ull &a) { return a ? 63 - __builtin_ctzll(a) : -1; }
+inline int msb(const ull &a) { return a ? 63 - __builtin_clzll(a) : -1; }
 inline ll getbit(const ll &a, ll i) { return (a >> i) & 1; }
 inline void setbit(ll &a, ll i) { a |= (1ll << i); }
 inline void delbit(ll &a, ll i) { a &= ~(1ll << i); }
@@ -171,12 +178,12 @@ bool btw(T a, T x, T b, bool left, bool right) {
 	bool l, r;
 	if (left) l = (a <= x);
 	else l = (a < x);
-	if (right) r = (x <= r);
-	else r = (x < r);
+	if (right) r = (x <= b);
+	else r = (x < b);
 	return l && r;
 }
 template <class T, class U>
-T ceil(T a, U b) { return (a + b - 1) / b; }
+T ceil(T a, U b) { return a >= 0 ? (a + (T)b - 1) / (T)b : a / (T)b; }
 
 // uncategorized
 template <class T>
@@ -184,17 +191,18 @@ inline bool chmax(T &a, const T &b) { return a < b ? a = b, true : false; }
 template <class T>
 inline bool chmin(T &a, const T &b) { return a > b ? a = b, true : false; }
 constexpr ll ten(ll n) {
+	assert(n >= 0 && n <= 18);
 	ll ret = 1, x = 10;
 	for(; n; x *= x, n >>= 1) ret *= (n & 1 ? x : 1);
 	return ret;
 }
-bool yesno(bool t) {
+inline bool yesno(bool t) {
 	cout << (t ? "Yes" : "No") << endl;
 	return t;
 }
 template <class T>
-vv<T> tramspose(const vec<T> &v) {
-	if (emp(v)) return {};
+vv<T> transpose(const vv<T> &v) {
+	if (emp(v) || emp(v[0])) return {};
 	ll h = sz(v), w = sz(v[0]);
 	vv<T> res(w, vec<T>(h, T()));
 	rep(i, h) rep(j, w) {
@@ -202,17 +210,21 @@ vv<T> tramspose(const vec<T> &v) {
 	}
 	return res;
 }
+// 後方互換のための別名（旧名は typo）
 template <class T>
-vv<T> rotate(const vec<T> &v, bool cw = true) {
+vv<T> tramspose(const vv<T> &v) { return transpose(v); }
+template <class T>
+vv<T> rotate(const vv<T> &v, bool cw = true) {
+	if (emp(v) || emp(v[0])) return {};
 	ll h = sz(v), w = sz(v[0]);
 	vv<T> res(w, vec<T>(h, T()));
 	rep(i, h) rep(j, w) {
-		if (cw) res[w - 1 - j][i] = v[i][j];
-		else res[j][h - 1 - i] = v[i][j];
+		if (cw) res[j][h - 1 - i] = v[i][j];
+		else res[w - 1 - j][i] = v[i][j];
 	}
 	return res;
 }
 template <class T>
-bool sfind(set<T>&s, T key) {
+bool sfind(const set<T>&s, const T& key) {
 	return s.find(key) != s.end();
 }
