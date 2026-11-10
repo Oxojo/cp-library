@@ -1,43 +1,102 @@
 #pragma once
 
-#include "../template/template.hpp"
+#include <cassert>
+#include <cmath>
+#include <numeric>
+#include <unordered_map>
+#include <utility>
+
+using ll = long long;
 
 template <typename T>
 T safe_mod(T a, T p) {
-    return a >= 0 ? a % p : (p - (-a) % p) % p;
+    a %= p;
+    return a < 0 ? a + p : a;
 }
 
-ll modmul(ll a, ll b, ll mod) { return __int128(a) * b % mod; }
+// (a * b) % mod without overflow
+inline ll modmul(ll a, ll b, ll mod) { return (ll)((__int128)a * b % mod); }
 
+// a^n mod p
 template <typename T, typename U>
 T modpow(T a, U n, T p) {
-	a = safe_mod(a, p);
-	T ret = 1 % p;
-	while (n != 0) {
-		if (n & 1) ret = U(ret) * a % p;
-		a = U(a) * a % p;
-		n /= 2;
-	}
-	return ret;
+    a = safe_mod(a, p);
+    T ret = T(1) % p;
+    while (n > 0) {
+        if (n & 1) ret = (T)((__int128)ret * a % p);
+        a = (T)((__int128)a * a % p);
+        n >>= 1;
+    }
+    return ret;
 }
-// a^x == b (mod p), if no such x exists than -1
+
+// inverse of x modulo mod (requires gcd(x, mod) == 1)
+inline ll modinv(ll x, ll mod) {
+    __int128 a = safe_mod(x, mod), b = mod, u = 1, v = 0;
+    while (b) {
+        __int128 t = a / b;
+        a -= t * b;
+        std::swap(a, b);
+        u -= t * v;
+        std::swap(u, v);
+    }
+    assert(a == 1);
+    __int128 r = u % mod;
+    if (r < 0) r += mod;
+    return (ll)r;
+}
+
+// smallest x >= 0 such that a^x == b (mod p), or -1 if it does not exist
+// (extended baby-step giant-step; works for composite p as well)
 template <typename T>
-T modlog(ll a, ll b, ll p) {
-    ll n = (ll)sqrtl(p) + 1, e = 1, f = 1, j = 1;
-    unordered_map<ll, ll> A;
-    while (j = n && (e = f = e * a % p) != b % p)
-        A[e * b % p] = j++;
-    if (e == b % p) return j;
-    if (gcd(p, e) == gcd(p, b))
-        reps(i, 2, n + 2) if (A.count(e = e * f % p)) 
-            return n * i - A[e];
-    return -1;
+T modlog(T a_, T b_, T p_) {
+    ll p = (ll)p_;
+    if (p == 1) return 0;
+    ll a = safe_mod((ll)a_, p), b = safe_mod((ll)b_, p);
+    if (b == 1 % p) return 0;
+    if (a == 0) return (b == 0) ? 1 : -1;
+
+    // strip the common factors of a and p
+    ll x0 = 0, mul = 1;
+    for (;;) {
+        ll g = std::gcd(a, p);
+        if (g == 1) break;
+        if (b == mul) return (T)x0;
+        if (b % g != 0) return (T)-1;
+        b /= g;
+        p /= g;
+        mul = modmul(mul, a / g, p);
+        ++x0;
+        if (p == 1) return (T)x0;
+    }
+
+    // now gcd(a, p) == 1: solve a^y == b * mul^{-1} (mod p)
+    ll target = modmul(b, modinv(mul, p), p);
+    ll n = (ll)std::sqrt((long double)p) + 1;
+    std::unordered_map<ll, ll> tbl;
+    tbl.reserve(n * 2);
+    ll e = 1;
+    for (ll j = 0; j < n; ++j) {
+        if (!tbl.count(e)) tbl[e] = j;
+        e = modmul(e, a, p);
+    }
+    ll step = modinv(e, p);  // a^{-n}
+    ll cur = target;
+    for (ll i = 0; i <= n; ++i) {
+        auto it = tbl.find(cur);
+        if (it != tbl.end()) return (T)(x0 + i * n + it->second);
+        cur = modmul(cur, step, p);
+    }
+    return (T)-1;
 }
-// x^2 == a (mod p)
-ll modsqrt(ll a, ll p) {
+
+// x such that x^2 == a (mod p), or -1 if it does not exist
+// (p must be an odd prime)
+inline ll modsqrt(ll a, ll p) {
     a %= p;
-    while (a < 0) a += p;
+    if (a < 0) a += p;
     if (a == 0) return 0;
+    if (p == 2) return a;
     if (modpow(a, (p - 1) / 2, p) != 1) return -1;
     if (p % 4 == 3) return modpow(a, (p + 1) / 4, p);
     ll s = p - 1, n = 2;
@@ -56,4 +115,3 @@ ll modsqrt(ll a, ll p) {
         b = modmul(b, g, p);
     }
 }
-ll modinv(ll x, ll mod) { return modpow(x, mod - 2, mod); }
