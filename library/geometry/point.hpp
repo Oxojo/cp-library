@@ -1,14 +1,13 @@
 #pragma once
 
-#include <cmath>
-#include <istream>
-#include <ostream>
+#include <bits/stdc++.h>
+using namespace std;
 
 typedef long double ld;
 constexpr ld eps = 1e-10;
 constexpr ld pi = 3.1415926535897932384626L;
 
-inline bool eq(ld a, ld b) { return std::fabs(b - a) < eps; }
+inline bool eq(ld a, ld b) { return fabs(b - a) < eps; }
 inline int sign(ld a) { return eq(a, 0) ? 0 : a > 0 ? 1 : -1; }
 
 struct Point {
@@ -40,20 +39,20 @@ struct Point {
     bool operator!=(const Point& p) const { return !((*this) == p); }
 
     Point rotate(ld radian) const {
-        ld c = std::cos(radian), s = std::sin(radian);
+        ld c = cos(radian), s = sin(radian);
         return {x * c - y * s, x * s + y * c};
     }
 
     ld dot(const Point& p) const { return x * p.x + y * p.y; }
     ld cross(const Point& p) const { return x * p.y - y * p.x; }
     ld norm() const { return x * x + y * y; }
-    ld abs() const { return std::sqrt(norm()); }
-    ld arg() const { return std::atan2(y, x); }
+    ld abs() const { return sqrt(norm()); }
+    ld arg() const { return atan2(y, x); }
 
-    friend std::istream& operator>>(std::istream& is, Point& p) {
+    friend istream& operator>>(istream& is, Point& p) {
         return is >> p.x >> p.y;
     }
-    friend std::ostream& operator<<(std::ostream& os, const Point& p) {
+    friend ostream& operator<<(ostream& os, const Point& p) {
         return os << p.x << ' ' << p.y;
     }
 };

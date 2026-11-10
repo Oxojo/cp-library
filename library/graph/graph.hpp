@@ -1,7 +1,7 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
 
 template <typename T>
 struct Edge {
@@ -16,7 +16,7 @@ struct Edge {
 
 template <typename T>
 struct Graph {
-    std::vector<std::vector<Edge<T>>> g;
+    vector<vector<Edge<T>>> g;
 
     Graph() = default;
 
@@ -33,16 +33,16 @@ struct Graph {
     void read(int m, int padding = -1, bool weight = false, bool directed = false) {
         while (m--) {
             int a, b;
-            std::cin >> a >> b;
+            cin >> a >> b;
             a += padding, b += padding;
             T c = T(1);
-            if (weight) std::cin >> c;
+            if (weight) cin >> c;
             add(a, b, c, directed);
         }
     }
 
-    inline std::vector<Edge<T>>& operator[](const int& k) { return g[k]; }
-    inline const std::vector<Edge<T>>& operator[](const int& k) const { return g[k]; }
+    inline vector<Edge<T>>& operator[](const int& k) { return g[k]; }
+    inline const vector<Edge<T>>& operator[](const int& k) const { return g[k]; }
 };
 
-template <typename T> using Edges = std::vector<Edge<T>>;
+template <typename T> using Edges = vector<Edge<T>>;

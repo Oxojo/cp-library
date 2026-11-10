@@ -1,31 +1,29 @@
 #pragma once
 
-#include <algorithm>
-#include <cassert>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
 
 #include "../math/modula.hpp"
 
 template <typename T = ll>
-struct FPS : std::vector<T> {
+struct FPS : vector<T> {
 private:
     ll mod = 998244353;
     ll root = 3;
 
-    void ntt(std::vector<T>& a) {
+    void ntt(vector<T>& a) {
         int n = (int)a.size();
         int L = 31 - __builtin_clz((unsigned)n);
-        std::vector<ll> rt(2, 1);
+        vector<ll> rt(2, 1);
         for (ll k = 2, s = 2; k < n; k *= 2, s++) {
             rt.resize(n);
             ll z[] = {1, modpow(root, mod >> s, mod)};
             for (ll i = k; i < 2 * k; i++) rt[i] = modmul(rt[i / 2], z[i & 1], mod);
         }
-        std::vector<int> rev(n);
+        vector<int> rev(n);
         for (int i = 0; i < n; i++) rev[i] = (rev[i / 2] | (i & 1) << L) / 2;
         for (int i = 0; i < n; i++)
-            if (i < rev[i]) std::swap(a[i], a[rev[i]]);
+            if (i < rev[i]) swap(a[i], a[rev[i]]);
         for (int k = 1; k < n; k *= 2) {
             for (int i = 0; i < n; i += 2 * k) {
                 for (int j = 0; j < k; j++) {
@@ -38,7 +36,7 @@ private:
         }
     }
 
-    std::vector<T> conv(const std::vector<T>& a, const std::vector<T>& b) {
+    vector<T> conv(const vector<T>& a, const vector<T>& b) {
         if (a.empty() || b.empty()) return {};
         ll s = (ll)a.size() + (ll)b.size() - 1;
         assert(s <= (1LL << 23));  // NTT-friendly upper bound for 998244353
@@ -46,7 +44,7 @@ private:
         while ((1LL << B) < s) ++B;
         int n = 1 << B;
         ll inv = modinv(n, mod);
-        std::vector<T> L(a), R(b), out(n);
+        vector<T> L(a), R(b), out(n);
         L.resize(n);
         R.resize(n);
         ntt(L);
@@ -69,13 +67,13 @@ public:
     }
 
     P pre(ll def) const {
-        ll n = std::min((ll)this->size(), std::max(0LL, def));
+        ll n = min((ll)this->size(), max(0LL, def));
         return P(this->begin(), this->begin() + n);
     }
     P rev(ll deg = -1) const {
         P ret(*this);
         if (deg != -1) ret.resize(deg, T(0));
-        std::reverse(ret.begin(), ret.end());
+        reverse(ret.begin(), ret.end());
         return ret;
     }
 
@@ -137,11 +135,11 @@ public:
         shrink();
         return *this;
     }
-    std::pair<P, P> div_mod(const P& r) {
+    pair<P, P> div_mod(const P& r) {
         P q = *this / r;
         P x = *this - q * r;
         x.shrink();
-        return std::make_pair(q, x);
+        return make_pair(q, x);
     }
     P operator-() const {
         P ret((ll)this->size());
@@ -173,7 +171,7 @@ public:
 
     // coefficient-wise product (shorter length)
     P dot(P r) const {
-        P ret(std::min(this->size(), r.size()));
+        P ret(min(this->size(), r.size()));
         for (ll i = 0; i < (ll)ret.size(); i++) ret[i] = (T)modmul((ll)(*this)[i], (ll)r[i], mod);
         return ret;
     }
@@ -202,7 +200,7 @@ public:
 
     P diff() const {
         const ll n = (ll)this->size();
-        P ret(std::max(0LL, n - 1));
+        P ret(max(0LL, n - 1));
         for (ll i = 1; i < n; i++) ret[i - 1] = (T)modmul((ll)(*this)[i], i, mod);
         return ret;
     }
@@ -297,7 +295,7 @@ public:
     // Taylor shift: returns f(x + c)
     P shift(T c) const {
         ll n = (ll)this->size();
-        std::vector<T> fact(n), rfact(n);
+        vector<T> fact(n), rfact(n);
         fact[0] = rfact[0] = T(1);
         for (ll i = 1; i < n; i++) fact[i] = (T)modmul((ll)fact[i - 1], i, mod);
         rfact[n - 1] = T(1) * (T)modinv(fact[n - 1], mod);

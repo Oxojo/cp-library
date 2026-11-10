@@ -1,8 +1,7 @@
 #pragma once
 
-#include <cassert>
-#include <istream>
-#include <ostream>
+#include <bits/stdc++.h>
+using namespace std;
 
 struct mint {
     using i64 = long long;
@@ -40,8 +39,8 @@ struct mint {
     mint operator/(const mint &p) const { return mint(*this) /= p; }
     bool operator==(const mint &p) const { return x == p.x; }
     bool operator!=(const mint &p) const { return x != p.x; }
-    friend std::ostream &operator<<(std::ostream &os, const mint &p) { return os << p.x; }
-    friend std::istream &operator>>(std::istream &is, mint &a) {
+    friend ostream &operator<<(ostream &os, const mint &p) { return os << p.x; }
+    friend istream &operator>>(istream &is, mint &a) {
         i64 t;
         if (is >> t) a = mint(t);
         return is;

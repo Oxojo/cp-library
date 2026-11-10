@@ -1,10 +1,7 @@
 #pragma once
 
-#include <cassert>
-#include <cmath>
-#include <numeric>
-#include <unordered_map>
-#include <utility>
+#include <bits/stdc++.h>
+using namespace std;
 
 using ll = long long;
 
@@ -36,9 +33,9 @@ inline ll modinv(ll x, ll mod) {
     while (b) {
         __int128 t = a / b;
         a -= t * b;
-        std::swap(a, b);
+        swap(a, b);
         u -= t * v;
-        std::swap(u, v);
+        swap(u, v);
     }
     assert(a == 1);
     __int128 r = u % mod;
@@ -59,7 +56,7 @@ T modlog(T a_, T b_, T p_) {
     // strip the common factors of a and p
     ll x0 = 0, mul = 1;
     for (;;) {
-        ll g = std::gcd(a, p);
+        ll g = gcd(a, p);
         if (g == 1) break;
         if (b == mul) return (T)x0;
         if (b % g != 0) return (T)-1;
@@ -72,8 +69,8 @@ T modlog(T a_, T b_, T p_) {
 
     // now gcd(a, p) == 1: solve a^y == b * mul^{-1} (mod p)
     ll target = modmul(b, modinv(mul, p), p);
-    ll n = (ll)std::sqrt((long double)p) + 1;
-    std::unordered_map<ll, ll> tbl;
+    ll n = (ll)sqrt((long double)p) + 1;
+    unordered_map<ll, ll> tbl;
     tbl.reserve(n * 2);
     ll e = 1;
     for (ll j = 0; j < n; ++j) {

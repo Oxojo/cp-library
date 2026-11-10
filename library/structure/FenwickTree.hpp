@@ -1,11 +1,12 @@
 #pragma once
 
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
 
 template <typename T>
 struct FenwickTree {
     int n = 0;
-    std::vector<T> data;
+    vector<T> data;
 
     FenwickTree() = default;
     explicit FenwickTree(int size) { init(size); }

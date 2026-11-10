@@ -1,20 +1,17 @@
 #pragma once
 
-#include <functional>
-#include <limits>
-#include <queue>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
 
 #include "./graph.hpp"
 
 template <typename T>
-std::vector<T> dijkstra(const Graph<T>& g, int s) {
-    using P = std::pair<T, int>;
-    const T inf = std::numeric_limits<T>::max() / 4;
+vector<T> dijkstra(const Graph<T>& g, int s) {
+    using P = pair<T, int>;
+    const T inf = numeric_limits<T>::max() / 4;
     int n = (int)g.size();
-    std::vector<T> dist(n, inf);
-    std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
+    vector<T> dist(n, inf);
+    priority_queue<P, vector<P>, greater<P>> pq;
     dist[s] = T(0);
     pq.emplace(T(0), s);
     while (!pq.empty()) {

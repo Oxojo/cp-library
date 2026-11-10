@@ -1,10 +1,10 @@
 #pragma once
 
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
 
 struct UnionFind {
-    std::vector<int> data;
+    vector<int> data;
     explicit UnionFind(int n = 0) : data(n, -1) {}
 
     int root(int k) {
@@ -19,7 +19,7 @@ struct UnionFind {
     bool unite(int x, int y) {
         x = root(x); y = root(y);
         if (x == y) return false;
-        if (data[x] > data[y]) std::swap(x, y);
+        if (data[x] > data[y]) swap(x, y);
         data[x] += data[y];
         data[y] = x;
         return true;
