@@ -1,11 +1,19 @@
 #pragma once
 
+#include <bits/stdc++.h>
+using namespace std;
+
 struct UnionFind {
     vector<int> data;
-    UnionFind(ll n) : data(n, -1) {}
+    explicit UnionFind(int n = 0) : data(n, -1) {}
 
     int root(int k) {
         return data[k] < 0 ? k : data[k] = root(data[k]);
+    }
+
+    int root(int k) const {
+        while (data[k] >= 0) k = data[k];
+        return k;
     }
 
     bool unite(int x, int y) {
@@ -17,11 +25,9 @@ struct UnionFind {
         return true;
     }
 
-    int size(int k) {
-        return -data[root(k)];
-    }
+    int size(int k) { return -data[root(k)]; }
+    int size(int k) const { return -data[root(k)]; }
 
-    bool same(int x, int y) {
-        return root(x) == root(y);
-    }
+    bool same(int x, int y) { return root(x) == root(y); }
+    bool same(int x, int y) const { return root(x) == root(y); }
 };
