@@ -1,4 +1,4 @@
-// competitive-verifier: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/GRL_4_B
+// competitive-verifier: PROBLEM https://onlinejudge.u-aizu.ac.jp/problems/GRL_6_A
 
 #include "../../library/graph/dinic.hpp"
 
@@ -16,7 +16,5 @@ int main() {
         cin >> u >> v >> c;
         mf.add_edge(u, v, c);
     }
-    int s, t;
-    cin >> s >> t;
-    cout << mf.max_flow(s, t) << "\n";
+    cout << mf.max_flow(0, n - 1) << "\n";
 }
