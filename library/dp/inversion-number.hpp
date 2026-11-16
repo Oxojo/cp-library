@@ -5,6 +5,9 @@ using namespace std;
 
 #include "../structure/FenwickTree.hpp"
 
+/**
+ * @brief Inversion number
+ */
 template <typename T>
 long long inversion_num(const vector<T>& v) {
     vector<T> x{v};

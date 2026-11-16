@@ -10,6 +10,9 @@ using namespace std;
 //   SegmentTree<ll> seg2(n, 0LL, op);         // explicit S, op stored as std::function
 //
 // prod(l, r) returns the product on the half-open interval [l, r).
+/**
+ * @brief Segment tree
+ */
 template <class S, class Op = function<S(S, S)>>
 struct SegmentTree {
     int n = 0, sz = 1, lg = 0;
