@@ -27,7 +27,7 @@ jobs:
 
       - name: Library headers do not depend on template.hpp
         run: |
-          if grep -rn 'template/template.hpp' library; then
+          if grep -rn --include='*.hpp' 'template/template.hpp' library; then
             echo "::error::library headers must not include template.hpp"
             exit 1
           fi
