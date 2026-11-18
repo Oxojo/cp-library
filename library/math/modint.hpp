@@ -4,6 +4,9 @@
 using namespace std;
 
 // mod must be prime for inv() / division
+/**
+ * @brief Modular integer
+ */
 template <int m>
 struct modint {
     static_assert(m >= 2, "mod must be >= 2");

@@ -5,7 +5,9 @@ using namespace std;
 
 #include "./graph.hpp"
 
-// dist[v] = {distance, previous vertex on the shortest path} (-1 if unreachable)
+/**
+ * @brief Dijkstra with path restoration
+ */
 template <typename T>
 vector<pair<T, int>> dijkstra_restore(const Graph<T>& g, int s) {
     using P = pair<T, int>;

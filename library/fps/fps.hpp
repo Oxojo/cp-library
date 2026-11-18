@@ -5,6 +5,9 @@ using namespace std;
 
 #include "../math/modula.hpp"
 
+/**
+ * @brief Formal power series
+ */
 template <typename T = ll>
 struct FPS : vector<T> {
 private:
