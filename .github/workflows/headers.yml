@@ -32,3 +32,11 @@ jobs:
             exit 1
           fi
           echo "ok: no dependency on template.hpp"
+
+      - name: Markdown has no Liquid syntax
+        run: |
+          if grep -rn --include='*.md' -E '\{\{|\{%' library; then
+            echo "::error::documentation Markdown must not contain Liquid tags ({{ or {%)"
+            exit 1
+          fi
+          echo "ok: no Liquid tags in Markdown"
