@@ -10,7 +10,7 @@ documentation_of: ./argsort.hpp
 ## 使い方
 
 ```cpp
-vector<Point> ps{{1, 0}, {0, 1}, {-1, 0}};
+vector<Point> ps{Point(1, 0), Point(0, 1), Point(-1, 0)};
 argsort(ps);
 ```
 
