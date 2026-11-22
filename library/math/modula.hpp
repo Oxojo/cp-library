@@ -5,9 +5,7 @@ using namespace std;
 
 using ll = long long;
 
-/**
- * @brief Modular arithmetic utilities
- */
+/// @brief Modular arithmetic utilities
 template <typename T>
 T safe_mod(T a, T p) {
     a %= p;

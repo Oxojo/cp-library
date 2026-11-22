@@ -3,14 +3,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Topological sort (Kahn's algorithm)
- *
- * Returns a topological order of a directed graph, or an empty vector if the
- * graph has a cycle. For an empty graph, returns an empty vector.
- *
- * @complexity O(n + m)
- */
+/// @brief Topological sort (Kahn's algorithm)
+///
+/// Returns a topological order of a directed graph, or an empty vector if the
+/// graph has a cycle. For an empty graph, returns an empty vector.
+///
+/// @complexity O(n + m)
 template <class G = vector<vector<int>>>
 vector<int> topological_sort(const G& g) {
     int n = (int)g.size();

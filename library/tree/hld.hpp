@@ -2,21 +2,19 @@
 
 #include "./rooted_tree.hpp"
 
-/**
- * @brief Heavy-light decomposition
- *
- * Extends RootedTree with heavy-light decomposition.
- *
- * @note
- *   - in/out/order are reassigned to the HLD order (heavy child first), which
- *     is still a DFS preorder, so subtree_range / is_ancestor keep working.
- *   - pos of v is in[v]; order[i] is the vertex at position i.
- *
- * @complexity
- *   Construction: O(n).
- *   lca / dist / kth_ancestor / jump: O(log n).
- *   path_segments: O(log n) segments.
- */
+/// @brief Heavy-light decomposition
+///
+/// Extends RootedTree with heavy-light decomposition.
+///
+/// @note
+///   - in/out/order are reassigned to the HLD order (heavy child first), which
+///     is still a DFS preorder, so subtree_range / is_ancestor keep working.
+///   - pos of v is in[v]; order[i] is the vertex at position i.
+///
+/// @complexity
+///   Construction: O(n).
+///   lca / dist / kth_ancestor / jump: O(log n).
+///   path_segments: O(log n) segments.
 template <class G = vector<vector<int>>>
 struct HLD : RootedTree<G> {
     using Base = RootedTree<G>;
@@ -97,11 +95,9 @@ struct HLD : RootedTree<G> {
         return kth_ancestor(v, a + b - k);
     }
 
-    /**
-     * Decomposes the simple path u -> v into O(log n) segments, in path order.
-     * Each segment is [l, r) in HLD order; rev tells the direction inside it.
-     * When edge is true, the LCA vertex is excluded (edge path).
-     */
+    /// Decomposes the simple path u -> v into O(log n) segments, in path order.
+    /// Each segment is [l, r) in HLD order; rev tells the direction inside it.
+    /// When edge is true, the LCA vertex is excluded (edge path).
     vector<PathSegment> path_segments(int u, int v, bool edge = false) const {
         vector<PathSegment> up, down;
 

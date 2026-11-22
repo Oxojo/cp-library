@@ -5,12 +5,10 @@ using namespace std;
 
 #include "../math/modula.hpp"
 
-/**
- * @brief Number theoretic transform and convolution
- *
- * MOD must be an NTT-friendly prime.  The primitive root is detected
- * automatically on first use.
- */
+/// @brief Number theoretic transform and convolution
+///
+/// MOD must be an NTT-friendly prime.  The primitive root is detected
+/// automatically on first use.
 template <int MOD = 998244353>
 struct NTT {
     static_assert(MOD > 2 && (MOD & 1), "MOD must be an odd prime");

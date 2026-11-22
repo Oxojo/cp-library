@@ -5,18 +5,16 @@ using namespace std;
 
 #include "./graph.hpp"
 
-/**
- * @brief Bellman-Ford
- *
- * Single source shortest paths with negative edges.
- *
- * @note
- *   - edges are a flat list (Edges<T>); build it with emplace_back(u, v, w).
- *   - negative_cycle is true if a negative cycle reachable from s exists.
- *   - unreachable vertices have numeric_limits<T>::max() / 4.
- *
- * @complexity O(n * m)
- */
+/// @brief Bellman-Ford
+///
+/// Single source shortest paths with negative edges.
+///
+/// @note
+///   - edges are a flat list (Edges<T>); build it with emplace_back(u, v, w).
+///   - negative_cycle is true if a negative cycle reachable from s exists.
+///   - unreachable vertices have numeric_limits<T>::max() / 4.
+///
+/// @complexity O(n * m)
 template <class T>
 struct BellmanFordResult {
     vector<T> dist;

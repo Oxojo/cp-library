@@ -3,21 +3,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Lowlink: bridges, articulation points, 2-edge-connected components
- *
- * Build with `Lowlink low(n); low.add_edge(u, v); low.build();`
- * Parallel edges and self-loops are handled (an edge id is used to skip only
- * the tree edge back to the parent).
- *
- * @note
- *   - bridge[e] is true for bridge edge ids.
- *   - articulation[v] is true for articulation points.
- *   - two_edge_component[v] is the 2-edge-connected component id after
- *     removing all bridges.
- *
- * @complexity O(n + m)
- */
+/// @brief Lowlink: bridges, articulation points, 2-edge-connected components
+///
+/// Build with `Lowlink low(n); low.add_edge(u, v); low.build();`
+/// Parallel edges and self-loops are handled (an edge id is used to skip only
+/// the tree edge back to the parent).
+///
+/// @note
+///   - bridge[e] is true for bridge edge ids.
+///   - articulation[v] is true for articulation points.
+///   - two_edge_component[v] is the 2-edge-connected component id after
+///     removing all bridges.
+///
+/// @complexity O(n + m)
 struct Lowlink {
     int n, m = 0;
     vector<pair<int, int>> edges;             // (u, v) of each edge id

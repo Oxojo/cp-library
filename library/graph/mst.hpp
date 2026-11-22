@@ -6,17 +6,15 @@ using namespace std;
 #include "../structure/UnionFind.hpp"
 #include "./graph.hpp"
 
-/**
- * @brief Minimum spanning tree (Kruskal)
- *
- * edges is a flat list (Edges<T>); build it with emplace_back(u, v, w).
- *
- * @note
- *   - edges in the result are indices into the input list.
- *   - connected is false if the graph is disconnected.
- *
- * @complexity O(m log m)
- */
+/// @brief Minimum spanning tree (Kruskal)
+///
+/// edges is a flat list (Edges<T>); build it with emplace_back(u, v, w).
+///
+/// @note
+///   - edges in the result are indices into the input list.
+///   - connected is false if the graph is disconnected.
+///
+/// @complexity O(m log m)
 template <class T>
 struct MstResult {
     T cost{};

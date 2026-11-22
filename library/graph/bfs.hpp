@@ -5,14 +5,12 @@ using namespace std;
 
 #include "./graph.hpp"
 
-/**
- * @brief BFS (unweighted shortest paths)
- *
- * Returns the distance from s (number of edges), or -1 if unreachable.
- * Weights of Graph<T> are ignored.
- *
- * @complexity O(n + m)
- */
+/// @brief BFS (unweighted shortest paths)
+///
+/// Returns the distance from s (number of edges), or -1 if unreachable.
+/// Weights of Graph<T> are ignored.
+///
+/// @complexity O(n + m)
 template <class G = vector<vector<int>>>
 vector<int> bfs(const G& g, int s) {
     int n = (int)g.size();
@@ -33,14 +31,12 @@ vector<int> bfs(const G& g, int s) {
     return dist;
 }
 
-/**
- * @brief 0-1 BFS
- *
- * Shortest paths on Graph<T> whose edge costs are 0 or 1.
- * Returns numeric_limits<T>::max() / 4 for unreachable vertices.
- *
- * @complexity O(n + m)
- */
+/// @brief 0-1 BFS
+///
+/// Shortest paths on Graph<T> whose edge costs are 0 or 1.
+/// Returns numeric_limits<T>::max() / 4 for unreachable vertices.
+///
+/// @complexity O(n + m)
 template <class T>
 vector<T> zero_one_bfs(const Graph<T>& g, int s) {
     int n = (int)g.size();
