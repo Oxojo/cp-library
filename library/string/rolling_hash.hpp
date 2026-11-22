@@ -3,9 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Rolling hash (mod 2^61 - 1)
- */
+/// @brief Rolling hash (mod 2^61 - 1)
 struct RollingHash {
     using ull = unsigned long long;
     static constexpr ull mod = (1ULL << 61) - 1;

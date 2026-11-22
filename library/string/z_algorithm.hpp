@@ -3,11 +3,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Z algorithm
- *
- * z[i] = LCP(s, s[i..]) for i > 0, and z[0] = n.
- */
+/// @brief Z algorithm
+///
+/// z[i] = LCP(s, s[i..]) for i > 0, and z[0] = n.
 template <typename T>
 vector<int> z_algorithm(const T& s) {
     int n = (int)s.size();

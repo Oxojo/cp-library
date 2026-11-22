@@ -3,9 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Prefix function (KMP)
- */
+/// @brief Prefix function (KMP)
 vector<int> prefix_function(const string& s) {
     int n = (int)s.size();
     vector<int> pi(n);
@@ -18,11 +16,9 @@ vector<int> prefix_function(const string& s) {
     return pi;
 }
 
-/**
- * @brief KMP string matching
- *
- * Returns the starting positions of all occurrences of pattern in text.
- */
+/// @brief KMP string matching
+///
+/// Returns the starting positions of all occurrences of pattern in text.
 vector<int> kmp_search(const string& text, const string& pattern) {
     int m = (int)pattern.size();
     if (m == 0) return {};

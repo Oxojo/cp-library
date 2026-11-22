@@ -3,12 +3,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Aho-Corasick automaton
- *
- * Builds a trie of lowercase English patterns and its failure links.
- * Call add() for each pattern, then build().
- */
+/// @brief Aho-Corasick automaton
+///
+/// Builds a trie of lowercase English patterns and its failure links.
+/// Call add() for each pattern, then build().
 struct AhoCorasick {
     struct Node {
         array<int, 26> next;

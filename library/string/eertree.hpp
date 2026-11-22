@@ -3,12 +3,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Eertree (palindromic tree)
- *
- * Nodes 0 and 1 are the EVEN and ODD roots.  New palindromes are numbered
- * 2, 3, ... in order of first occurrence.
- */
+/// @brief Eertree (palindromic tree)
+///
+/// Nodes 0 and 1 are the EVEN and ODD roots.  New palindromes are numbered
+/// 2, 3, ... in order of first occurrence.
 struct Eertree {
     vector<int> len, link, parent, endpos;
     vector<array<int, 26>> next;

@@ -51,12 +51,10 @@ inline vector<int> build(vector<int> a) {
 
 }  // namespace suffix_array_detail
 
-/**
- * @brief Suffix array
- *
- * Accepts a string or a vector of integers.
- * Complexity: O(n log n).
- */
+/// @brief Suffix array
+///
+/// Accepts a string or a vector of integers.
+/// Complexity: O(n log n).
 inline vector<int> suffix_array(const string& s) {
     return suffix_array_detail::build(vector<int>(s.begin(), s.end()));
 }
@@ -74,11 +72,9 @@ vector<int> suffix_array(const Container& s) {
     return suffix_array_detail::build(std::move(a));
 }
 
-/**
- * @brief LCP array (Kasai)
- *
- * lcp[i] = LCP(s[sa[i]..], s[sa[i+1]..]).
- */
+/// @brief LCP array (Kasai)
+///
+/// lcp[i] = LCP(s[sa[i]..], s[sa[i+1]..]).
 template <typename Container>
 vector<int> lcp_array(const Container& s, const vector<int>& sa) {
     int n = (int)s.size();

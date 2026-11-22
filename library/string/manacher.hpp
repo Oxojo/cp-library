@@ -3,12 +3,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Manacher's algorithm
- *
- * Returns L of length 2n-1.  L[i] is the maximum length of a palindrome
- * centered at the i-th center (characters and gaps numbered from left).
- */
+/// @brief Manacher's algorithm
+///
+/// Returns L of length 2n-1.  L[i] is the maximum length of a palindrome
+/// centered at the i-th center (characters and gaps numbered from left).
 vector<int> manacher(const string& s) {
     int n = (int)s.size();
     if (n == 0) return {};
