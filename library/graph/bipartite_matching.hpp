@@ -3,18 +3,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Bipartite matching (Hopcroft-Karp)
- *
- * Left vertices are 0 .. L-1 and right vertices are 0 .. R-1.
- * The augmenting path search is iterative (no deep recursion).
- *
- * @note
- *   - match_left[u] is the matched right vertex, or -1.
- *   - match_right[v] is the matched left vertex, or -1.
- *
- * @complexity O(E sqrt(V))
- */
+/// @brief Bipartite matching (Hopcroft-Karp)
+///
+/// Left vertices are 0 .. L-1 and right vertices are 0 .. R-1.
+/// The augmenting path search is iterative (no deep recursion).
+///
+/// @note
+///   - match_left[u] is the matched right vertex, or -1.
+///   - match_right[v] is the matched left vertex, or -1.
+///
+/// @complexity O(E sqrt(V))
 struct BipartiteMatching {
     int L, R;
     vector<vector<int>> g;

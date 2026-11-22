@@ -16,13 +16,11 @@ Poly<T, MOD> inv_series(const Poly<T, MOD>& f, ll deg);
 
 }  // namespace polynomial_detail
 
-/**
- * @brief Polynomial over Z/MODZ
- *
- * Coefficients are stored as residues in [0, MOD).
- * This struct provides the ring operations (+, -, *, /, %) and
- * polynomial-specific operations such as diff/integral/shift.
- */
+/// @brief Polynomial over Z/MODZ
+///
+/// Coefficients are stored as residues in [0, MOD).
+/// This struct provides the ring operations (+, -, *, /, %) and
+/// polynomial-specific operations such as diff/integral/shift.
 template <typename T = ll, int MOD = 998244353>
 struct Poly : vector<T> {
     static_assert(is_integral_v<T>, "T must be an integral type");

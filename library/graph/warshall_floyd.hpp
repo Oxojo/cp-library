@@ -3,17 +3,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Warshall-Floyd (all pairs shortest paths)
- *
- * d is the distance matrix; initialize unreachable pairs with INF
- * (default: numeric_limits<T>::max() / 4) and d[i][i] = 0.
- * The matrix is updated in place.
- *
- * @returns false if a negative cycle exists (d[i][i] < 0), true otherwise.
- *
- * @complexity O(n^3)
- */
+/// @brief Warshall-Floyd (all pairs shortest paths)
+///
+/// d is the distance matrix; initialize unreachable pairs with INF
+/// (default: numeric_limits<T>::max() / 4) and d[i][i] = 0.
+/// The matrix is updated in place.
+///
+/// @returns false if a negative cycle exists (d[i][i] < 0), true otherwise.
+///
+/// @complexity O(n^3)
 template <class T>
 bool warshall_floyd(vector<vector<T>>& d, T INF = numeric_limits<T>::max() / 4) {
     int n = (int)d.size();

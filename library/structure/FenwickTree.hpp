@@ -3,9 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Fenwick tree
- */
+/// @brief Fenwick tree
 template <typename T>
 struct FenwickTree {
     int n = 0;

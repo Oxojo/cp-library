@@ -5,14 +5,12 @@ using namespace std;
 
 #include "../graph/graph.hpp"
 
-/**
- * @brief Tree diameter (unweighted)
- *
- * Two BFS traversals: s = farthest from 0, t = farthest from s.
- * path is the vertex sequence of one diameter.
- *
- * @complexity O(n)
- */
+/// @brief Tree diameter (unweighted)
+///
+/// Two BFS traversals: s = farthest from 0, t = farthest from s.
+/// path is the vertex sequence of one diameter.
+///
+/// @complexity O(n)
 struct TreeDiameter {
     int n, s, t, len;
     vector<int> path;
@@ -51,14 +49,12 @@ struct TreeDiameter {
     pair<int, int> center() const { return {path[len / 2], path[(len + 1) / 2]}; }
 };
 
-/**
- * @brief Tree diameter (weighted, non-negative weights)
- *
- * Two DFS traversals on Graph<T> with costs.
- * len is the total weight of path.
- *
- * @complexity O(n)
- */
+/// @brief Tree diameter (weighted, non-negative weights)
+///
+/// Two DFS traversals on Graph<T> with costs.
+/// len is the total weight of path.
+///
+/// @complexity O(n)
 template <class T>
 struct WeightedTreeDiameter {
     int n, s, t;

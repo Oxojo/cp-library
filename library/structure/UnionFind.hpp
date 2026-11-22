@@ -3,9 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Union-Find
- */
+/// @brief Union-Find
 struct UnionFind {
     vector<int> data;
     explicit UnionFind(int n = 0) : data(n, -1) {}

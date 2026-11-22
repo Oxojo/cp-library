@@ -13,9 +13,7 @@ using namespace std;
 //   auto comp  = [](ll f, ll g) { return f + g; };   // f(g(x))
 //
 // prod(l, r) is the product on [l, r), apply(l, r, f) applies f there.
-/**
- * @brief Lazy segment tree
- */
+/// @brief Lazy segment tree
 template <class S, class F, class Op = function<S(S, S)>, class Mapping = function<S(F, S)>,
           class Comp = function<F(F, F)>>
 struct LazySegmentTree {

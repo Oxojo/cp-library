@@ -5,9 +5,7 @@ using namespace std;
 
 #include "./graph.hpp"
 
-/**
- * @brief Dijkstra
- */
+/// @brief Dijkstra
 template <typename T>
 vector<T> dijkstra(const Graph<T>& g, int s) {
     using P = pair<T, int>;
