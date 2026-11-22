@@ -1,0 +1,13 @@
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/zalgorithm
+
+#include "../../library/string/z_algorithm.hpp"
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    string s;
+    cin >> s;
+    auto z = z_algorithm(s);
+    for (int i = 0; i < (int)z.size(); ++i)
+        cout << z[i] << " \n"[i + 1 == (int)z.size()];
+}
