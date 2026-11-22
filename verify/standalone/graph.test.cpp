@@ -211,7 +211,7 @@ int main() {
         for (int i = 0; i < m; i++) {
             int u = (int)(rng() % n), v = (int)(rng() % n);
             ll w = rng() % 2;
-            g.add(u, v, w, true);
+            g.add(u, v, w);
         }
         int s = (int)(rng() % n);
         auto dist = zero_one_bfs<ll>(g, s);

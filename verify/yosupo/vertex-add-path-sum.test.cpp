@@ -36,7 +36,7 @@ int main() {
             int u, v;
             cin >> u >> v;
             ll sum = 0;
-            for (auto [l, r] : hld.path_ranges(u, v)) sum += bit.prod(l, r - 1);
+            for (auto [l, r] : hld.path_ranges(u, v)) sum += bit.prod(l, r);
             cout << sum << "\n";
         }
     }

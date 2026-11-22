@@ -2,7 +2,7 @@
 
 #include "../../library/template/template.hpp"
 #include "../../library/graph/graph.hpp"
-#include "../../library/graph/dijkstra_restore.hpp"
+#include "../../library/graph/dijkstra.hpp"
 
 int main() {
     ios::sync_with_stdio(false);
@@ -11,19 +11,23 @@ int main() {
     int s, t; cin >> s >> t;
     const long long inf = numeric_limits<long long>::max() / 4;
     Graph<long long> g(n);
-    g.read(m, 0, 1, 1);
-    auto dist = dijkstra_restore<long long>(g, s);
-    if (dist[t].first == inf) {
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        long long w;
+        cin >> u >> v >> w;
+        g.add(u, v, w);
+    }
+    vector<int> parent;
+    auto dist = dijkstra(g, s, &parent);
+    if (dist[t] == inf) {
         cout << -1 << "\n";
     } else {
-        long long d = dist[t].first;
+        long long d = dist[t];
         vector<int> path;
-        for (int v = t; v != -1; v = dist[v].second) {
-            path.emplace_back(v);
-        }
+        for (int v = t; v != -1; v = parent[v]) path.emplace_back(v);
         reverse(begin(path), end(path));
         cout << d << ' ' << (int)path.size() - 1 << "\n";
-        for (int i = 0; i < path.size() - 1; i++) {
+        for (int i = 0; i < (int)path.size() - 1; i++) {
             cout << path[i] << ' ' << path[i + 1] << "\n";
         }
     }

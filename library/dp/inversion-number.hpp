@@ -19,7 +19,7 @@ long long inversion_num(const vector<T>& v) {
     long long res = 0;
     for (auto& p : v) {
         int it = (int)(lower_bound(x.begin(), x.end(), p) - x.begin());
-        if (it + 1 != s) res += bit.prod(it + 1, s - 1);
+        res += bit.prod(it + 1, s);
         bit.apply(it, 1);
     }
     return res;

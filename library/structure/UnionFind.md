@@ -22,5 +22,5 @@ int sz = uf.size(v);
 
 ## 注意
 
-- `const` オブジェクトからも `same` / `size` を呼べます。
+- `same` / `size` は経路圧縮のため非 `const` メソッドです。
 - rollback や重み付き Union-Find は提供していません。

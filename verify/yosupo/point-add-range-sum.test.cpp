@@ -15,7 +15,6 @@ void solve() {
         }
         else {
             ll l, r; cin >> l >> r;
-            r--;
             cout << f.prod(l, r) << endl;
         }
     }

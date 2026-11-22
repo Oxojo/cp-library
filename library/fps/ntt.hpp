@@ -15,7 +15,7 @@ template <int MOD = 998244353>
 struct NTT {
     static_assert(MOD > 2 && (MOD & 1), "MOD must be an odd prime");
     static constexpr int mod = MOD;
-    static constexpr int rank2 = countr_zero((unsigned)(MOD - 1));
+    static constexpr int rank2 = __builtin_ctz((unsigned)(MOD - 1));
     static_assert(rank2 <= 31, "MOD is too large");
 
     using ll = long long;
@@ -97,7 +97,7 @@ struct NTT {
     template <typename T>
     static void butterfly(vector<T>& a) {
         int n = (int)a.size();
-        int h = countr_zero((unsigned)n);
+        int h = __builtin_ctz((unsigned)n);
         const Info& inf = info();
         for (int ph = 1; ph <= h; ++ph) {
             int w = 1 << (ph - 1), p = 1 << (h - ph);
@@ -111,7 +111,7 @@ struct NTT {
                     a[i + offset + p] = (T)sub(l, r);
                 }
                 if (s + 1 != w)
-                    now = mul(now, inf.rate2[countr_zero((unsigned)(~s))]);
+                    now = mul(now, inf.rate2[__builtin_ctz((unsigned)(~s))]);
             }
         }
     }
@@ -119,7 +119,7 @@ struct NTT {
     template <typename T>
     static void butterfly_inv(vector<T>& a) {
         int n = (int)a.size();
-        int h = countr_zero((unsigned)n);
+        int h = __builtin_ctz((unsigned)n);
         const Info& inf = info();
         for (int ph = h; ph >= 1; --ph) {
             int w = 1 << (ph - 1), p = 1 << (h - ph);
@@ -133,7 +133,7 @@ struct NTT {
                     a[i + offset + p] = (T)mul(sub(l, r), inow);
                 }
                 if (s + 1 != w)
-                    inow = mul(inow, inf.irate2[countr_zero((unsigned)(~s))]);
+                    inow = mul(inow, inf.irate2[__builtin_ctz((unsigned)(~s))]);
             }
         }
     }

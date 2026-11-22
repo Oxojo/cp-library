@@ -35,7 +35,7 @@ int main() {
         } else {
             int u;
             cin >> u;
-            cout << bit.prod(tr.in[u], tr.out[u] - 1) << "\n";
+            cout << bit.prod(tr.in[u], tr.out[u]) << "\n";
         }
     }
 }

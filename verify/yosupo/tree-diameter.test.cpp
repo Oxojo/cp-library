@@ -14,7 +14,7 @@ int main() {
         int a, b;
         ll c;
         cin >> a >> b >> c;
-        g.add(a, b, c);
+        g.add_undirected(a, b, c);
     }
     WeightedTreeDiameter<ll> dia(g);
     cout << dia.len << " " << dia.path.size() << "\n";

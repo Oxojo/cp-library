@@ -12,7 +12,8 @@ documentation_of: ./FenwickTree.hpp
 ```cpp
 FenwickTree<ll> bit(n);
 bit.apply(i, x);          // a[i] += x
-ll s = bit.prod(l, r);    // sum of [l, r]（閉区間）
+ll s = bit.prod(l, r);    // sum of [l, r)
+ll t = bit.prod(r);       // sum of [0, r)
 ```
 
 ## 計算量
@@ -22,5 +23,5 @@ ll s = bit.prod(l, r);    // sum of [l, r]（閉区間）
 
 ## 注意
 
-- 区間は**閉区間** `[l, r]` です。半開区間ではありません。
-- `prod` は範囲外の添字をクランプします。
+- 区間は **半開区間** `[l, r)` です。
+- `prod(r)` は `[0, r)` の和です。

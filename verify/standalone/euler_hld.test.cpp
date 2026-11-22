@@ -183,7 +183,7 @@ int main() {
 
         // HLD with Graph<ll> gives the same decomposition
         Graph<ll> wg(n);
-        for (auto [a, b] : edges) wg.add(a, b, 1);
+        for (auto [a, b] : edges) wg.add_undirected(a, b, 1);
         HLD hld2(wg, 0);
         CHECK(hld2.depth == hld.depth);
         CHECK(hld2.lca(n - 1, 0) == 0);

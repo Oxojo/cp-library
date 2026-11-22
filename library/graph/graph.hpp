@@ -16,32 +16,25 @@ struct Edge {
 
 /**
  * @brief Graph (adjacency list)
+ *
+ * add() is directed.  Use add_undirected() for an undirected edge.
  */
 template <typename T>
 struct Graph {
     vector<vector<Edge<T>>> g;
 
     Graph() = default;
-
     explicit Graph(int n) : g(n) {}
 
     size_t size() const { return g.size(); }
 
-    // NOTE: directed = false (default) adds both directions, i.e. an undirected edge.
-    void add(int from, int to, T cost = 1, bool directed = false) {
+    void add(int from, int to, T cost = T(1)) {
         g[from].emplace_back(from, to, cost);
-        if (!directed) g[to].emplace_back(to, from, cost);
     }
 
-    void read(int m, int padding = -1, bool weight = false, bool directed = false) {
-        while (m--) {
-            int a, b;
-            cin >> a >> b;
-            a += padding, b += padding;
-            T c = T(1);
-            if (weight) cin >> c;
-            add(a, b, c, directed);
-        }
+    void add_undirected(int u, int v, T cost = T(1)) {
+        add(u, v, cost);
+        add(v, u, cost);
     }
 
     inline vector<Edge<T>>& operator[](const int& k) { return g[k]; }

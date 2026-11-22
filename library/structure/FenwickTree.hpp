@@ -5,6 +5,8 @@ using namespace std;
 
 /**
  * @brief Fenwick tree
+ *
+ * Intervals are half-open: [l, r).
  */
 template <typename T>
 struct FenwickTree {
@@ -26,18 +28,18 @@ struct FenwickTree {
         for (++k; k <= n; k += k & -k) data[k] += x;
     }
 
-    // sum of [0, k]
-    T prod(int k) const {
-        if (k < 0) return T{};
-        if (k >= n) k = n - 1;
+    // sum of [0, r)
+    T prod(int r) const {
+        if (r <= 0) return T{};
+        if (r > n) r = n;
         T ret{};
-        for (++k; k > 0; k -= k & -k) ret += data[k];
+        for (; r > 0; r -= r & -r) ret += data[r];
         return ret;
     }
 
-    // sum of [l, r] (closed interval)
+    // sum of [l, r)
     T prod(int l, int r) const {
-        if (l > r) return T{};
-        return prod(r) - prod(l - 1);
+        if (l >= r) return T{};
+        return prod(r) - prod(l);
     }
 };

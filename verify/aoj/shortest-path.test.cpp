@@ -11,8 +11,13 @@ int main() {
     int s; cin >> s;
     const long long inf = numeric_limits<long long>::max() / 4;
     Graph<long long> g(n);
-    g.read(m, 0, 1, 1);
-    vector<long long> dist = dijkstra<long long>(g, s);
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        long long w;
+        cin >> u >> v >> w;
+        g.add(u, v, w);
+    }
+    vector<long long> dist = dijkstra(g, s);
     for (int i = 0; i < n; i++) {
         if (dist[i] == inf) {
             cout << "INF" << "\n";

@@ -10,7 +10,7 @@ documentation_of: ./template.hpp
 - `ll` / `ld` / `i128` などの型
 - `rep` / `reps` / `rrep` などのループマクロ
 - `in(...)` / `out(...)` の可変長入出力
-- `chmax` / `chmin`、`mkuniq`、`mkcum`、`i128` の入出力など
+- `chmax` / `chmin`、`mkuniq`、`mkcum` などの補助関数
 
 ## 使い方
 

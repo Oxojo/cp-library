@@ -78,7 +78,7 @@ int main() {
 
         // RootedTree also works with Graph<ll> (weights ignored)
         Graph<ll> wg1(n);
-        for (auto [a, b] : edges) wg1.add(a, b, 1);
+        for (auto [a, b] : edges) wg1.add_undirected(a, b, 1);
         RootedTree tr2(wg1, 0);
         CHECK(tr2.depth == tr.depth);
         CHECK(tr2.size == tr.size);
@@ -182,7 +182,7 @@ int main() {
         Graph<ll> wg(n);
         for (auto [a, b] : edges) {
             ll c = 1 + (ll)(rng() % 10);
-            wg.add(a, b, c);
+            wg.add_undirected(a, b, c);
         }
         ll wbest = 0;
         for (int s = 0; s < n; s++) {
