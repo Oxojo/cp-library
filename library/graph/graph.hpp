@@ -14,9 +14,7 @@ struct Edge {
     operator int() const { return to; }
 };
 
-/**
- * @brief Graph (adjacency list)
- */
+/// @brief Graph (adjacency list)
 template <typename T>
 struct Graph {
     vector<vector<Edge<T>>> g;

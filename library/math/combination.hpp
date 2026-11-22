@@ -10,9 +10,7 @@
 //
 // All arguments must satisfy 0 <= n <= the value passed to the constructor
 // (and n < mod for the factorial precomputation to be valid).
-/**
- * @brief Binomial coefficients
- */
+/// @brief Binomial coefficients
 struct Combination {
     int n;
     ll mod;

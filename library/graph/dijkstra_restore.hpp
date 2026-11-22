@@ -5,9 +5,7 @@ using namespace std;
 
 #include "./graph.hpp"
 
-/**
- * @brief Dijkstra with path restoration
- */
+/// @brief Dijkstra with path restoration
 template <typename T>
 vector<pair<T, int>> dijkstra_restore(const Graph<T>& g, int s) {
     using P = pair<T, int>;

@@ -2,18 +2,16 @@
 
 #include "./rooted_tree.hpp"
 
-/**
- * @brief Lowest common ancestor (binary lifting)
- *
- * Extends RootedTree with binary lifting.
- *
- * @note Vertices are 0-indexed and the root is r (default 0).
- *
- * @complexity
- *   Construction: O(n log n).
- *   lca / dist / kth_ancestor / jump: O(log n).
- *   path: O(length of the path).
- */
+/// @brief Lowest common ancestor (binary lifting)
+///
+/// Extends RootedTree with binary lifting.
+///
+/// @note Vertices are 0-indexed and the root is r (default 0).
+///
+/// @complexity
+///   Construction: O(n log n).
+///   lca / dist / kth_ancestor / jump: O(log n).
+///   path: O(length of the path).
 template <class G = vector<vector<int>>>
 struct LCA : RootedTree<G> {
     using Base = RootedTree<G>;

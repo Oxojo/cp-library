@@ -2,16 +2,14 @@
 
 #include "./scc.hpp"
 
-/**
- * @brief 2-SAT
- *
- * Variables are 0-indexed. add_clause(i, f, j, g) adds
- * (x_i == f) OR (x_j == g).
- *
- * @complexity
- *   add_clause: O(1).
- *   satisfiable: O(n + m).
- */
+/// @brief 2-SAT
+///
+/// Variables are 0-indexed. add_clause(i, f, j, g) adds
+/// (x_i == f) OR (x_j == g).
+///
+/// @complexity
+///   add_clause: O(1).
+///   satisfiable: O(n + m).
 struct TwoSAT {
     int n;
     vector<vector<int>> g;  // node 2*i = (x_i = false), 2*i+1 = (x_i = true)

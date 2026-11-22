@@ -2,14 +2,12 @@
 
 #include "./rooted_tree.hpp"
 
-/**
- * @brief Tree centroids
- *
- * A vertex v is a centroid if every connected component after removing v has
- * at most n/2 vertices. A tree has one or two centroids.
- *
- * @complexity O(n)
- */
+/// @brief Tree centroids
+///
+/// A vertex v is a centroid if every connected component after removing v has
+/// at most n/2 vertices. A tree has one or two centroids.
+///
+/// @complexity O(n)
 template <class G = vector<vector<int>>>
 struct TreeCentroid {
     vector<int> centroids;

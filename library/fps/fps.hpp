@@ -5,12 +5,10 @@ using namespace std;
 
 #include "./polynomial.hpp"
 
-/**
- * @brief Formal power series
- *
- * Adds series operations (inv/log/exp/sqrt/pow) on top of Poly.
- * Coefficients are stored as residues in [0, MOD).
- */
+/// @brief Formal power series
+///
+/// Adds series operations (inv/log/exp/sqrt/pow) on top of Poly.
+/// Coefficients are stored as residues in [0, MOD).
 template <typename T = ll, int MOD = 998244353>
 struct FPS : Poly<T, MOD> {
     using Base = Poly<T, MOD>;

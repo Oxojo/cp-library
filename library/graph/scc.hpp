@@ -3,18 +3,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Strongly connected components (Kosaraju)
- *
- * Iterative implementation (safe for long paths).
- *
- * @note
- *   - groups are listed in topological order of the condensation:
- *     if there is an edge from component i to component j, then i < j.
- *   - Vertices are 0-indexed.
- *
- * @complexity O(n + m) time, O(n + m) extra space.
- */
+/// @brief Strongly connected components (Kosaraju)
+///
+/// Iterative implementation (safe for long paths).
+///
+/// @note
+///   - groups are listed in topological order of the condensation:
+///     if there is an edge from component i to component j, then i < j.
+///   - Vertices are 0-indexed.
+///
+/// @complexity O(n + m) time, O(n + m) extra space.
 template <class G = vector<vector<int>>>
 struct SCC {
     int n;

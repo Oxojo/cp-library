@@ -3,11 +3,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Dinic's maximum flow
- *
- * @complexity O(V^2 E) in general, much faster in practice.
- */
+/// @brief Dinic's maximum flow
+///
+/// @complexity O(V^2 E) in general, much faster in practice.
 template <class T>
 struct Dinic {
     struct Edge {

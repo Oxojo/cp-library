@@ -3,22 +3,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @brief Rooted tree
- *
- * Builds a rooted tree with an iterative DFS (no recursion).
- *
- * @note
- *   - The input must be a connected, undirected tree.
- *   - Vertices are 0-indexed; the root has parent -1 and depth 0.
- *   - Vertices of the subtree of v are order[in[v] ... out[v]-1],
- *     and out[v] - in[v] == size[v].
- *   - A vertex is an ancestor of itself.
- *
- * @complexity
- *   Construction: O(n) time, O(n) extra space.
- *   subtree_range / is_ancestor: O(1).
- */
+/// @brief Rooted tree
+///
+/// Builds a rooted tree with an iterative DFS (no recursion).
+///
+/// @note
+///   - The input must be a connected, undirected tree.
+///   - Vertices are 0-indexed; the root has parent -1 and depth 0.
+///   - Vertices of the subtree of v are order[in[v] ... out[v]-1],
+///     and out[v] - in[v] == size[v].
+///   - A vertex is an ancestor of itself.
+///
+/// @complexity
+///   Construction: O(n) time, O(n) extra space.
+///   subtree_range / is_ancestor: O(1).
 template <class G = vector<vector<int>>>
 struct RootedTree {
     int n, root;

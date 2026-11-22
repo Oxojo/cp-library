@@ -2,19 +2,17 @@
 
 #include "./rooted_tree.hpp"
 
-/**
- * @brief Euler tour
- *
- * Extends RootedTree with the Euler tour of the tree.
- *
- * @note
- *   - tour has 2n-1 vertices (each edge is traversed twice, including returns).
- *   - first[v] is the first index of v in tour.
- *   - tour_depth[i] == depth[tour[i]].
- *   - subtree intervals (in/out) are inherited from RootedTree.
- *
- * @complexity Construction: O(n).
- */
+/// @brief Euler tour
+///
+/// Extends RootedTree with the Euler tour of the tree.
+///
+/// @note
+///   - tour has 2n-1 vertices (each edge is traversed twice, including returns).
+///   - first[v] is the first index of v in tour.
+///   - tour_depth[i] == depth[tour[i]].
+///   - subtree intervals (in/out) are inherited from RootedTree.
+///
+/// @complexity Construction: O(n).
 template <class G = vector<vector<int>>>
 struct EulerTour : RootedTree<G> {
     using Base = RootedTree<G>;
@@ -52,17 +50,15 @@ struct EulerTour : RootedTree<G> {
     }
 };
 
-/**
- * @brief LCA by Euler tour + sparse table
- *
- * O(1) lca / dist after an O(n log n) build.
- *
- * @note Memory is O(n log n).
- *
- * @complexity
- *   Construction: O(n log n).
- *   lca / dist: O(1).
- */
+/// @brief LCA by Euler tour + sparse table
+///
+/// O(1) lca / dist after an O(n log n) build.
+///
+/// @note Memory is O(n log n).
+///
+/// @complexity
+///   Construction: O(n log n).
+///   lca / dist: O(1).
 template <class G = vector<vector<int>>>
 struct EulerTourLCA : EulerTour<G> {
     using Base = EulerTour<G>;

@@ -6,9 +6,7 @@ using namespace std;
 #include "./point.hpp"
 
 // sort points by argument in [-pi, pi)
-/**
- * @brief Sort points by argument
- */
+/// @brief Sort points by argument
 inline void argsort(vector<Point>& g) {
     auto half = [](const Point& p) {
         if (p.y < -eps) return 0;

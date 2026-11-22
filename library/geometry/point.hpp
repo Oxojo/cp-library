@@ -10,9 +10,7 @@ constexpr ld pi = 3.1415926535897932384626L;
 inline bool eq(ld a, ld b) { return fabs(b - a) < eps; }
 inline int sign(ld a) { return eq(a, 0) ? 0 : a > 0 ? 1 : -1; }
 
-/**
- * @brief 2D point
- */
+/// @brief 2D point
 struct Point {
     ld x, y;
 
